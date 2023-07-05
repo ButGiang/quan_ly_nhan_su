@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Forget Password</title>
     @include('header')
 </head>
 
@@ -15,7 +14,7 @@
                 @include('alert')  
                 <p class="login-box-msg">Nhập email tài khoản để lấy lại mật khẩu.</p>
               
-                <form action="/getPass/recoverPass" method="post">
+                <form action="/getPass" method="post">
                     <div class="input-group mb-3">
                         <input type="email" name='email' class="form-control" placeholder="Email">
                         <div class="input-group-append">

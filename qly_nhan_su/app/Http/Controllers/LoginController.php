@@ -7,17 +7,21 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+
 use Mail;
 use Carbon\Carbon;
 use App\Models\Users;
 
+use App\Http\Requests\ResetPassRequest;
+
 class LoginController extends Controller {   
 
     public function index() {
-        return view('Account.login');
+        return view('Account.login', ['title' => '- Log in -']);
     }
 
-    public function check(Request $request) {
+    public function post_login(Request $request) {
         $this->validate($request, [
             'email' => 'required|email:filter',
             'password' => 'required'
@@ -43,12 +47,10 @@ class LoginController extends Controller {
     }
 
     public function getPass() {
-        return view('Account.forgetPass', [
-            'title' => 'Forget Password'
-        ]);
+        return view('Account.forgetPass', ['title' => 'Forget Password']);
     }
 
-    public function recoverPass(Request $request) {
+    public function post_getPass(Request $request) {
         $email = $request->input('email');
         $date = Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-y');
         $title_mail = 'Khôi phục mật khẩu cho tài khoản đồ ác thực tập '. $date;
@@ -85,11 +87,36 @@ class LoginController extends Controller {
         }
     }
 
-    public function updatePass() {
-        return view('Account.updatePass');
+    public function updatePass($email, $token) {
+        return view('Account.updatePass', [
+            'title' => 'Update Password',
+            'email' => $email,
+            'token' => $token
+        ]);
     }
 
     public function post_updatePass(Request $request) {
-        
+        $data = $request->all();
+        $random_token = Str::random();
+        $users = Users::where('email', '=', $data['email'])->where('user_token', '=', $data['token'])->get();
+        $count_user = $users->count();
+        if($count_user > 0) {
+            foreach($users as $user) {
+                $user_id = $user->id;
+            }
+            $reset = Users::find($user_id);
+            $reset->password = Hash::make($data['password']);
+            $reset->user_token = $random_token;
+            $reset->save();
+            
+            if(Auth::check()) {
+                Auth::logout();
+            }
+
+            return redirect('login')->with('success', 'Đã cập nhật mật khẩu mới.');
+        }
+        else {
+            return redirect()->back()->with('error', 'Link đã quá hạn, vui lòng thử lại.');
+        }
     }
 }

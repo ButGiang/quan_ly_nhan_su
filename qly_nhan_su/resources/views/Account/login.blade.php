@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title> - Log in - </title>
     @include('header')
 </head>
 
@@ -16,7 +15,7 @@
                 @include('alert')
                 <p class="login-box-msg">Đăng nhập để bắt đầu phiên làm việc.</p>
                 
-                <form action="/login/check" method="post">
+                <form action="/login" method="post">
                     <div class="input-group mb-3">
                         <input type="email" name='email' class="form-control" placeholder="Email">
                         <div class="input-group-append">

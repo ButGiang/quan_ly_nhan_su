@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Update Password</title>
     @include('header')
 </head>
 
@@ -14,9 +13,14 @@
 
             <div class="card-body">
                 <p class="login-box-msg">Nhập mật khẩu mới cho tài khoản.</p>
-                <form action="" method="post">
+                @include('alert') 
+                <form action="/updatePass/{email}/{token}" method="post">
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="mật khẩu mới">
+
+                        <input type="hidden" name='email' value="{{ $email }}">
+                        <input type="hidden" name='token' value="{{ $token }}">
+
+                        <input type="password" name='password' class="form-control" placeholder="mật khẩu mới">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -25,7 +29,7 @@
                     </div>
 
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Xác nhận mật khẩu">
+                        <input type="password" name='comfirm_password' class="form-control" placeholder="Xác nhận mật khẩu">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
