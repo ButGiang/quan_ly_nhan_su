@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\LoginController;
 use \App\Http\Controllers\MainController;
 use \App\Http\Controllers\StaffController;
-
+use \App\Http\Controllers\MajorController;
 
 Route::get('/', [LoginController::class, 'index']);
 
@@ -27,6 +27,13 @@ Route::middleware(['auth'])->group(function() {
         Route::get('/list', [StaffController::class, 'index']);
         Route::get('/add', [StaffController::class, 'create']);
         Route::post('/add', [StaffController::class, 'post_create']);
+        Route::delete('/delete', [StaffController::class, 'delete']);
     });
-
+    
+    Route::prefix('major')->group(function() {
+        Route::get('/list', [MajorController::class, 'index']);
+        Route::get('/add', [MajorController::class, 'create']);
+        Route::post('/add', [MajorController::class, 'post_create']);
+        Route::delete('/delete', [MajorController::class, 'delete']);
+    });
 });

@@ -5,19 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Staff extends Model
+class Major extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'first_name',
-        'last_name',
-        'birthday',
-        'email',
-        'address',
-        'phone',
-        'major',
-        'recruitment_day',
+        'name',
+        'parent_id',
         'active'
     ];
+
+
 }

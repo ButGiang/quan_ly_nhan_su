@@ -15,8 +15,8 @@
             </div>
 
             <div class="form-group">
-                <label>Ngày sinh</label></label>
-                <input type="date" name="birthday" class="form-control" placeholder="Enter birthday">
+                <label>Ngày sinh</label>
+                <input type="date" name="birthday" class="form-control">
             </div>
 
             <div class="form-group">
@@ -30,7 +30,7 @@
             </div>
 
             <div class="form-group">
-                <label>Số điện thoại</label></label>
+                <label>Số điện thoại</label>
                 <input type="text" name="phone" class="form-control" placeholder="Enter phone number">
             </div>
 
@@ -38,9 +38,14 @@
                 <label>Nghiệp vụ</label>
                 <select name="major" class="form-control">
                     @foreach($majors as $major) 
-                        <option value='{{ $major }}'>{{ $major }}</option>
+                        <option value='123'>{{ $major }}</option>
                     @endforeach
                 </select>
+            </div>
+
+            <div class="form-group">
+                <label>Ngày tuyển dụng</label>
+                <input type="date" name="recruitment_day" class="form-control">
             </div>
 
             <div class="form-group">

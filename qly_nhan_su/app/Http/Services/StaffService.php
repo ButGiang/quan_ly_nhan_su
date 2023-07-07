@@ -7,7 +7,11 @@ use Illuminate\Support\Facades\Session;
 
 class StaffService {
     public function getStaffList() {
-        return Staff::orderbyDesc('id')->paginate(10);
+        return Staff::where('active', 1)->orderbyDesc('id')->paginate(10);
+    }
+
+    public function getStaff($email) {
+        return Staff::where('email', '=', $email)->where('active', 1)->firstOrFail();
     }
 
     public function getMajor() {
@@ -22,9 +26,10 @@ class StaffService {
                 'birthday' => $request->input('birthday'),
                 'email' => (string) $request->input('email'),
                 'address' => (string) $request->input('address'),
-                'phone' => (int) $request->input('phone'),
+                'phone' => (string) $request->input('phone'),
                 'major' => (string) $request->input('major'),
-                'active' => (string) $request->input('active')
+                'recruitment_day' => $request->input('recruitment_day'),
+                'active' => $request->input('active')
             ]);
             $request->session()->flash('success', 'Tạo nhân viên mới thành công!');
         }
@@ -33,5 +38,14 @@ class StaffService {
             return false;
         }
         return true;
+    }
+
+    public function delete($request) {
+        $id = (int) $request->input('id');
+        $staff = Staff::where('id', $id)->first();
+        if($staff) {
+            return Staff::where('id', $id)->delete();
+        }
+        return false;
     }
 }
