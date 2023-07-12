@@ -4,7 +4,7 @@
     @include('header')
 </head>
 
-<body class="hold-transition login-page" style="background-image: url('https://wallpapers.com/images/featured/picture-en3dnh2zi84sgt3t.jpg')">
+<body class="hold-transition login-page" style="background-image: url('https://khoinguonsangtao.vn/wp-content/uploads/2022/08/tai-background-dep-nhat.jpg')">
     <div class="login-box">
         <div class="card card-outline card-primary">
             <div class="card-header text-center">

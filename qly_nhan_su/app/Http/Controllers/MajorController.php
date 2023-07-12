@@ -2,37 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Services\MajorService;
-use App\Models\Major;
+use Illuminate\Http\Request;
+
+use App\Http\Services\ChuyenNganhService;
+use App\Models\chuyennganh;
 
 class MajorController extends Controller
 {
  
-    protected $majorService;
+    protected $chuyennganhService;
 
-    public function __construct(MajorService $majorService) {
-        $this->majorService = $majorService;
+    public function __construct(ChuyenNganhService $chuyennganhService) {
+        $this->chuyennganhService = $chuyennganhService;
     }
 
     public function index() {
         return view('Major.list', [
             'title' => 'Major list',
-            'majors' => $this->majorService->getMajorList()
+            'majors' => $this->chuyennganhService->getDSCN()
         ]);
     }
 
     public function create() {
         return view('Major.add', [
             'title' => 'Add Major',
-            'majors' => $this->majorService->getMajor()
+            'majors' => $this->chuyennganhService->getDSCN()
         ]);
     }
 
     public function post_create(Request $request) {
-        $this->majorService->create($request);
-
+        $this->chuyennganhService->create($request);
         return redirect()->back();
     }
 

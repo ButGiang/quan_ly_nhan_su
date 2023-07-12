@@ -5,7 +5,11 @@
     </div>
 
     <?php 
-        $user_name = Auth::user()->name;
+    
+    use App\Models\nhanvien;
+
+        $id = Auth::user()->id;
+        $name = nhanvien::where('id', $id)->value('ten');
         $avatar = Auth::user()->avatar;
         $email = Auth::user()->email;
         $token = Auth::user()->user_token;
@@ -14,10 +18,10 @@
     <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-            <img src="#" class="img-circle elevation-2" alt="User Image">
+                <img src="#" class="img-circle elevation-2" alt="User Image" style="margin-right: 8px;">
             </div>
             <div class="info">
-            <a href=" {{ $avatar }}" class="d-block">{{ $user_name }}</a>
+                <a href=" {{ $avatar }}" class="d-block"><b>{{ $name }}</b></a>
             </div>
         </div>
 
@@ -36,6 +40,15 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+                {{-- Dashboard --}}
+                <li class="nav-item">
+                    <a href="/" class="nav-link">
+                        <i class="nav-icon fa fa-home" aria-hidden="true"></i>
+                        <p>Trang chủ</p>
+                    </a>
+                </li>
+
                 {{-- Staff --}}
                 <li class="nav-item">
                     <a href="#" class="nav-link">
@@ -67,7 +80,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book" aria-hidden="true"></i>
                         <p>
-                            Nghiệp vụ
+                            Chuyên ngành
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -76,13 +89,13 @@
                         <li class="nav-item">
                             <a href="/major/list" class="nav-link">
                             <i class="fas fa-clipboard-list nav-icon"></i>
-                            <p>Danh sách nghiệp vụ</p>
+                            <p>Danh sách chuyên ngành</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/major/add" class="nav-link">
                             <i class="fas fa-plus nav-icon"></i>
-                            <p>Thêm mới nghiệp vụ</p>
+                            <p>Thêm mới Chuyên ngành</p>
                             </a>
                         </li>
                     </ul>
@@ -93,16 +106,16 @@
                     <a href="" class="nav-link">
                         <i class="nav-icon fa fa-user-circle" aria-hidden="true"></i>
                         <p>
-                            Tài khoản
+                            Cá nhân
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
 
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/profile" class="nav-link">
                             <i class="fas fa-user-edit nav-icon"></i>
-                            <p>Chỉnh sửa thông tin</p>
+                            <p>Thông tin cá nhân</p>
                             </a>
                         </li>
                         <li class="nav-item">

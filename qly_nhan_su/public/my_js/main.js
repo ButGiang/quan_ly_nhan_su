@@ -45,7 +45,7 @@ $('#upload').change(function() {
         type: 'post',
         datatype: 'JSON',
         data: form,
-        url: '/admin/upload/services',
+        url: '/edit_profile',
 
         success: function(result) {
             if(!result.error) {
@@ -59,7 +59,5 @@ $('#upload').change(function() {
                 alert('Upload file thất bại!')
             }
         }
-
     })
-
 })

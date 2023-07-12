@@ -2,26 +2,30 @@
 
 use Illuminate\Support\Facades\Route;
 
-use \App\Http\Controllers\LoginController;
+use \App\Http\Controllers\AccountController;
 use \App\Http\Controllers\MainController;
 use \App\Http\Controllers\StaffController;
 use \App\Http\Controllers\MajorController;
+use \App\Http\Controllers\UploadController;
 
-Route::get('/', [LoginController::class, 'index']);
+Route::get('/', [AccountController::class, 'index']);
 
-Route::get('login', [LoginController::class, 'index'])->name('login');
-Route::post('login', [LoginController::class, 'post_login']);
-Route::get('logout', [LoginController::class, 'logout']);
+Route::get('login', [AccountController::class, 'index'])->name('login');
+Route::post('login', [AccountController::class, 'post_login']);
+Route::get('logout', [AccountController::class, 'logout']);
 
-Route::get('getPass', [LoginController::class, 'getPass']);
-Route::post('getPass', [LoginController::class, 'post_getPass']);
+Route::get('getPass', [AccountController::class, 'getPass']);
+Route::post('getPass', [AccountController::class, 'post_getPass']);
 
-Route::get('updatePass/{email}/{token}', [LoginController::class, 'updatePass']);
-Route::post('updatePass/{email}/{token}', [LoginController::class, 'post_updatePass']);
+Route::get('updatePass/{email}/{token}', [AccountController::class, 'updatePass']);
+Route::post('updatePass/{email}/{token}', [AccountController::class, 'post_updatePass']);
 
 Route::middleware(['auth'])->group(function() {
     Route::get('/', [MainController::class, 'index'])->name('main');
     Route::get('main', [MainController::class, 'index']);
+        
+    Route::get('profile', [MainController::class, 'profile']);
+    Route::post('profile', [MainController::class, 'post_profile']);
 
     Route::prefix('staff')->group(function() {
         Route::get('/list', [StaffController::class, 'index']);

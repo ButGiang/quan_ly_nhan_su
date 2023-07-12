@@ -4,6 +4,6 @@
 
 <script src="/template/dist/js/adminlte.min.js?v=3.2.0"></script>
 
-<script src="/template/my_js/main.js"></script>
+<script src="/my_js/main.js"></script>
 
 @yield('footer')

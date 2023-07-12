@@ -4,7 +4,7 @@
     @include('header')
 </head>
 
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="background-image: url('https://antimatter.vn/wp-content/uploads/2022/05/background-dep-1.jpg')">
     <div class="login-box">
         <div class="card card-outline card-primary">
             <div class="card-header text-center">

@@ -11,14 +11,15 @@ use Illuminate\Support\Facades\Hash;
 
 use Mail;
 use Carbon\Carbon;
-use App\Models\Users;
-
+use App\Models\taikhoan;
 use App\Http\Requests\ResetPassRequest;
 
-class LoginController extends Controller {   
+class AccountController extends Controller {   
 
     public function index() {
-        return view('Account.login', ['title' => '- Log in -']);
+        return view('Account.login', [
+            'title' => '- Log in -'
+        ]);
     }
 
     public function post_login(Request $request) {
@@ -47,14 +48,16 @@ class LoginController extends Controller {
     }
 
     public function getPass() {
-        return view('Account.forgetPass', ['title' => 'Forget Password']);
+        return view('Account.forgetPass', [
+            'title' => 'Forget Password'
+        ]);
     }
 
     public function post_getPass(Request $request) {
         $email = $request->input('email');
         $date = Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-y');
         $title_mail = 'Khôi phục mật khẩu cho tài khoản đồ ác thực tập '. $date;
-        $user = Users::where('email', '=', $email)->get();
+        $user = taikhoan::where('email', '=', $email)->get();
         foreach($user as $item) {
             $user_id = $item->id;
         }
@@ -66,7 +69,7 @@ class LoginController extends Controller {
             }
             else {
                 $random_token = Str::random();
-                $user = Users::find($user_id);
+                $user = taikhoan::find($user_id);
                 $user->user_token = $random_token;
                 $user->save();  
 
@@ -98,13 +101,13 @@ class LoginController extends Controller {
     public function post_updatePass(Request $request) {
         $data = $request->all();
         $random_token = Str::random();
-        $users = Users::where('email', '=', $data['email'])->where('user_token', '=', $data['token'])->get();
+        $users = taikhoan::where('email', '=', $data['email'])->where('user_token', '=', $data['token'])->get();
         $count_user = $users->count();
         if($count_user > 0) {
             foreach($users as $user) {
                 $user_id = $user->id;
             }
-            $reset = Users::find($user_id);
+            $reset = taikhoan::find($user_id);
             $reset->password = Hash::make($data['password']);
             $reset->user_token = $random_token;
             $reset->save();
@@ -119,4 +122,5 @@ class LoginController extends Controller {
             return redirect()->back()->with('error', 'Link đã quá hạn, vui lòng thử lại.');
         }
     }
+
 }

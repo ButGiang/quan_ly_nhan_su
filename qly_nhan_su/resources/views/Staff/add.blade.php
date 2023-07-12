@@ -20,6 +20,11 @@
             </div>
 
             <div class="form-group">
+                <label>Căn cước công dân</label>
+                <input type="text" name="CCCD" class="form-control" placeholder="Enter CCCD">
+            </div>
+
+            <div class="form-group">
                 <label>email</label>
                 <input type="email" name="email" class="form-control" placeholder="Enter email">
             </div>
@@ -35,17 +40,30 @@
             </div>
 
             <div class="form-group">
-                <label>Nghiệp vụ</label>
-                <select name="major" class="form-control">
-                    @foreach($majors as $major) 
-                        <option value='123'>{{ $major }}</option>
+                <label>Phòng ban</label>
+                <select name="department" class="form-control">
+                    @foreach($departments as $department) 
+                        <option value='{{ $department->id_phongban }}'>{{ $department->ten }}</option>
                     @endforeach
                 </select>
             </div>
 
             <div class="form-group">
-                <label>Ngày tuyển dụng</label>
-                <input type="date" name="recruitment_day" class="form-control">
+                <label>Chuyên ngành</label>
+                <select name="major" class="form-control">
+                    @foreach($majors as $major) 
+                        <option value='{{ $major->id_chuyennganh }}'>{{ $major->ten }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Trình độ</label>
+                <select name="level" class="form-control">
+                    @foreach($levels as $level) 
+                        <option value='{{ $level->id_trinhdo }}'>{{ $level->ten }}</option>
+                    @endforeach
+                </select>
             </div>
 
             <div class="form-group">
