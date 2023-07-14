@@ -12,6 +12,7 @@ class phongban extends Model
     protected $table = "phongban";
 
     protected $fillable = [
+        'id_phongban',
         'ten'
     ];
 

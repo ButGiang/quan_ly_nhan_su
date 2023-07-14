@@ -14,6 +14,7 @@ class taikhoan extends Authenticatable
     protected $table = "taikhoan";
 
     protected $fillable = [
+        'id_taikhoan',
         'email',
         'matkhau',
         'role',

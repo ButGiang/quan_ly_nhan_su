@@ -23,9 +23,16 @@ class StaffController extends Controller
     }
 
     public function index() {
+        $departments = phongban::orderBy('id_phongban', 'asc')->get();
+        $majors = chuyennganh::orderBy('id_chuyennganh', 'asc')->get();
+        $levels = trinhdo::orderBy('id_trinhdo', 'asc')->get();
+
         return view('Staff.list', [
             'title' => 'Staff list',
-            'staffs' => $this->nhanvienService->getDSNV()
+            'staffs' => $this->nhanvienService->getDSNV(),
+            'departments' => $departments,
+            'majors' => $majors,
+            'levels' => $levels
         ]);
     }
 
@@ -35,7 +42,7 @@ class StaffController extends Controller
         $levels = trinhdo::orderBy('id_trinhdo', 'asc')->get();
 
         return view('Staff.add', [
-            'title' => 'Add Staff',
+            'title' => 'add Staff',
             'departments' => $departments,
             'majors' => $majors,
             'levels' => $levels
@@ -48,14 +55,34 @@ class StaffController extends Controller
         return redirect()->back()->withInput();
     }
 
+    public function edit(nhanvien $id) {
+        $departments = phongban::orderBy('id_phongban', 'asc')->get();
+        $majors = chuyennganh::orderBy('id_chuyennganh', 'asc')->get();
+        $levels = trinhdo::orderBy('id_trinhdo', 'asc')->get();
+
+        return view('Staff.edit', [
+            'title' => 'edit Staff: '. $id->ho. ' '. $id->ten,
+            'staff' => $id,
+            'departments' => $departments,
+            'majors' => $majors,
+            'levels' => $levels
+        ]);
+    }
+
+    public function post_edit(Request $request, nhanvien $id) {
+        $this->nhanvienService->update($request, $id);
+        return redirect('/staff/list');
+    }
+
     public function delete(Request $request): JsonResponse {
         $result = $this->nhanvienService->delete($request);
 
-        if($request) {
+        if($result) {
             return response()->json([
                 'error' => false,
                 'message' => 'Xóa thành công!'
             ]);
+            return location.reload();
         }
         return response()->json([
             'error' => true

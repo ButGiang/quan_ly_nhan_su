@@ -12,7 +12,7 @@ class ChuyenNganhService {
     }
 
     public function getChuyenNganh($id_chuyennganh) {
-        return chuyennganh::where('id_chuyennganh', $id_chuyennganh)->value('name');
+        return chuyennganh::where('id_chuyennganh', $id_chuyennganh)->value('ten');
     }
 
     public function create($request) {
@@ -29,11 +29,20 @@ class ChuyenNganhService {
         return true;
     }
 
-    public function edit() {
-        
+    public function update($request, $major): bool {
+        $major->ten = (string) $request->input('name');
+        $major->save();
+
+        $request->session()->flash('success', 'Cập nhật thành công');
+        return true;
     }
 
     public function delete($request) {
-
+        $chuyennganh = chuyennganh::where('id_chuyennganh', (int) $request->input('id'))->first();
+        if($chuyennganh) {
+            $chuyennganh->delete();
+            return true;
+        }
+        return false;
     }
 }

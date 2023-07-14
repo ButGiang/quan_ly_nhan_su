@@ -6,16 +6,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Services\NhanVienService;
-use App\Http\Services\ChuyenNganhService;
+use App\Http\Services\UploadService;
 use App\Models\nhanvien;
+use App\Models\taikhoan;
 
 class MainController extends Controller
 {
-    protected $nhanvienService, $chuyennganhService;
+    protected $nhanvienService, $uploadService;
 
-    public function __construct(NhanVienService $nhanvienService, ChuyenNganhService $chuyennganhService) {
+    public function __construct(NhanVienService $nhanvienService, UploadService $uploadService) {
         $this->nhanvienService = $nhanvienService;
-        $this->chuyennganhService = $chuyennganhService;
+        $this->uploadService = $uploadService;
     }
 
     public function index() {
@@ -50,6 +51,26 @@ class MainController extends Controller
     }
 
     public function post_profile(Request $request) {
-        echo 'ac';
+        $id = Auth::user()->id;
+        $nhanvien = $this->nhanvienService->getNhanVien($id);     
+        $id_taikhoan = Auth::user()->id_taikhoan;
+        $taikhoan = taikhoan::where('id_taikhoan', $id_taikhoan)->first();
+
+        $this->nhanvienService->edit_profile($request, $nhanvien);
+
+        $url = $this->uploadService->upload($request);
+
+        if($url) {
+            response()->json([
+                'error' => false,
+                'url' => $url
+            ]);                       
+            $taikhoan->avatar = $url;
+            $taikhoan->save();
+        }
+        else {
+            response()->json(['error' => true]);
+        }
+        return redirect('profile');
     }
 }

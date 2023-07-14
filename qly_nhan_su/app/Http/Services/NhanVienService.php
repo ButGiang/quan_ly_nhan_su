@@ -36,6 +36,7 @@ class NhanVienService {
             nhanvien::create([
                 'ho' => (string) $request->input('first_name'), 
                 'ten' => (string) $request->input('last_name'),
+                'gioitinh' => (string) $request->input('gender'),
                 'ngaysinh' => $request->input('birthday'),
                 'email' => (string) $request->input('email'),
                 'CCCD' => (string) $request->input('CCCD'),
@@ -55,10 +56,44 @@ class NhanVienService {
         return true;
     }
 
-    public function delete($id) {
-        $nhanvien = nhanvien::getNhanVien($id);
+    public function edit_profile($request, $nhanvien) {
+        $nhanvien->ho = (string) $request->input('first_name');
+        $nhanvien->ten = (string) $request->input('last_name');
+        $nhanvien->ngaysinh = $request->input('birthday');
+        $nhanvien->email = (string) $request->input('email');
+        $nhanvien->CCCD = (string) $request->input('CCCD');
+        $nhanvien->diachi = (string) $request->input('address');
+        $nhanvien->sdt = (string) $request->input('phone');
+        $nhanvien->save();
+
+        $request->session()->flash('success', 'Cập nhật thành công');
+        return true;
+    }
+
+    public function update($request, $staff): bool {
+        $staff->ho = (string) $request->input('first_name');
+        $staff->ten = (string) $request->input('last_name');
+        $staff->gioitinh = (string) $request->input('gender');
+        $staff->ngaysinh = $request->input('birthday');
+        $staff->email = (string) $request->input('email');
+        $staff->CCCD = (string) $request->input('CCCD');
+        $staff->diachi = (string) $request->input('address');
+        $staff->sdt = (string) $request->input('phone');
+        $staff->active = (string) $request->input('active');
+        $staff->id_phongban = (string) $request->input('department');
+        $staff->id_chuyennganh = (string) $request->input('major');
+        $staff->id_trinhdo = (string) $request->input('level');
+        $staff->save();
+
+        $request->session()->flash('success', 'Cập nhật thành công');
+        return true;
+    }
+
+    public function delete($request) {
+        $nhanvien = nhanvien::where('id', (int) $request->input('id'))->first();
         if($nhanvien) {
-            return nhanvien::where('id', $id)->delete();
+            $nhanvien->delete();
+            return true;
         }
         return false;
     }

@@ -9,6 +9,10 @@ class Helper {
         return $active = 0 ? '<span class="btn btn-danger btn-xs">No</span>' : '<span class="btn btn-success btn-xs">Yes</span>';
     }
 
+    public static function gender($gender = 1) {
+        return $active = 1 ? '<span class="btn btn-info btn-xs">Nam</span>' : '<span class="btn btn-info btn-xs">Nữ</span>';
+    }
+
     public static function staff_list($users) {
         $html = '';
         foreach($users as $user) {
@@ -16,10 +20,8 @@ class Helper {
                 <tr>
                     <td>'. $user->id .'</td>
                     <td>'. $user->ho. ' '. $user->ten .'</td>
-                    <td>'. $user->ngaysinh .'</td>
-                    <td>'. $user->CCCD .'</td>
+                    <td>'. self::gender($user->gender) .'</td>
                     <td>'. $user->email .'</td>
-                    <td>'. $user->diachi .'</td>
                     <td>'. $user->sdt .'</td>
                     <td>'. $user->department->ten.'</td>
                     <td>'. $user->major->ten .'</td>
@@ -48,11 +50,11 @@ class Helper {
                     <td>'. $major->id_chuyennganh .'</td>
                     <td>'. $major->ten .'</td>
                     <td>
-                        <a class="btn btn-primary btn-sm" href="/major/edit/'. $major->id .'">
+                        <a class="btn btn-primary btn-sm" href="/major/edit/'. $major->id_chuyennganh .'">
                             <i class="fas fa-edit"></i>
                         </a>
                         <a class="btn btn-danger btn-sm" href="#"
-                        onclick="RemoveRow('. $major->id .', \'/major/delete\')">
+                        onclick="RemoveRow('. $major->id_chuyennganh .', \'/major/delete\')">
                             <i class="fas fa-trash"></i>
                         </a>
                     </td>
@@ -62,4 +64,25 @@ class Helper {
         return $html;
     }
 
+    public static function department_list($departments) {
+        $html = '';
+        foreach($departments as $department) {
+            $html .= '
+                <tr>
+                    <td>'. $department->id_phongban .'</td>
+                    <td>'. $department->ten .'</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" href="/department/edit/'. $department->id_phongban .'">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a class="btn btn-danger btn-sm" href="#"
+                        onclick="RemoveRow('. $department->id_phongban .', \'/department/delete\')">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            ';       
+        }                   
+        return $html;
+    }
 }

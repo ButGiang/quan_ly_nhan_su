@@ -36,8 +36,33 @@ class MajorController extends Controller
         return redirect()->back();
     }
 
-    public function delete(Request $request): JsonResponse {
+    public function edit($id_chuyennganh) {
+        $major = chuyennganh::where('id_chuyennganh', $id_chuyennganh)->first();
+        return view('Major.edit', [
+            'title' => 'edit Major: '. $major->ten,
+            'major' => $major
+        ]);
+    }
 
+    public function post_edit(Request $request, $id_chuyennganh) {
+        $major = chuyennganh::where('id_chuyennganh', $id_chuyennganh)->first();
+        $this->chuyennganhService->update($request, $major);
+        return redirect('/major/list');
+    }
+
+    public function delete(Request $request): JsonResponse {
+        $result = $this->chuyennganhService->delete($request);
+
+        if($result) {
+            return response()->json([
+                'error' => false,
+                'message' => 'Xóa thành công!'
+            ]);
+            return location.reload();
+        }
+        return response()->json([
+            'error' => true
+        ]);
     }
 
 }

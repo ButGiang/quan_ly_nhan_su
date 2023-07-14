@@ -12,6 +12,7 @@ class chuyennganh extends Model
     protected $table = "chuyennganh";
 
     protected $fillable = [
+        'id_chuyennganh',
         'ten'
     ];
 

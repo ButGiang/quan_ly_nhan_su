@@ -14,6 +14,7 @@ class nhanvien extends Model
     protected $fillable = [
         'ho',
         'ten',
+        'gioitinh',
         'ngaysinh',
         'CCCD',
         'email',

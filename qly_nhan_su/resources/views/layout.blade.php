@@ -17,7 +17,7 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                    <i class="fas fa-expand-arrows-alt"></i>
+                        <i class="fas fa-expand-arrows-alt"></i>
                     </a>
                 </li>
             </ul>
@@ -35,7 +35,7 @@
                         <div class="col-md-12">
                             <div class="card card-primary mt-3">
                                 <div class="card-header">
-                                    <h3 class="card-title"> {{$title}} </small></h3>
+                                    <h3 class="card-title"> {{ $title }} </small></h3>
                                 </div>
 
 
@@ -56,9 +56,12 @@
             </div>
         </footer>
 
-        <aside class="control-sidebar control-sidebar-dark"></aside>
+        <aside class="control-sidebar control-sidebar-dark">
+
+        </aside>
     </div>
 
     @include('footer')
 </body>
+
 </html>

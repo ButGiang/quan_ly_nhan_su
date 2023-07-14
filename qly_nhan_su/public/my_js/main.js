@@ -5,7 +5,7 @@ $.ajaxSetup({
     }
 });
 
-
+// làm trống thanh searchbar
 document.getElementById('search-btn').onclick = function() {
     document.getElementById('search-input').value=''
 }
@@ -45,7 +45,7 @@ $('#upload').change(function() {
         type: 'post',
         datatype: 'JSON',
         data: form,
-        url: '/edit_profile',
+        url: url,
 
         success: function(result) {
             if(!result.error) {

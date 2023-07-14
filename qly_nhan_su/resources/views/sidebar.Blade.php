@@ -5,12 +5,11 @@
     </div>
 
     <?php 
-    
     use App\Models\nhanvien;
-
+    use App\Models\taikhoan;
         $id = Auth::user()->id;
         $name = nhanvien::where('id', $id)->value('ten');
-        $avatar = Auth::user()->avatar;
+        $avatar = 'http://127.0.0.1:8000/'. taikhoan::where('id', $id)->value('avatar');
         $email = Auth::user()->email;
         $token = Auth::user()->user_token;
     ?>
@@ -18,10 +17,10 @@
     <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="#" class="img-circle elevation-2" alt="User Image" style="margin-right: 8px;">
+                <img src="{{ $avatar }}" class="img-circle elevation-2" alt="User Image" style="margin-right: 8px;">
             </div>
             <div class="info">
-                <a href=" {{ $avatar }}" class="d-block"><b>{{ $name }}</b></a>
+                <a href="#" class="d-block"><b>{{ $name }}</b></a>
             </div>
         </div>
 
@@ -75,6 +74,32 @@
                     </ul>
                 </li>
 
+                {{-- Department --}}
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-building" aria-hidden="true"></i>
+                        <p>
+                            Phòng ban
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/department/list" class="nav-link">
+                            <i class="fas fa-clipboard-list nav-icon"></i>
+                            <p>Danh sách phòng ban</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/department/add" class="nav-link">
+                            <i class="fas fa-plus nav-icon"></i>
+                            <p>Phòng ban mới</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
                 {{-- Major --}}
                 <li class="nav-item">
                     <a href="#" class="nav-link">
@@ -99,6 +124,43 @@
                             </a>
                         </li>
                     </ul>
+                </li>
+
+                {{-- Contract --}}
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-file-contract" aria-hidden="true"></i>
+                        <p>
+                            Hợp đồng
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/contract/list" class="nav-link">
+                            <i class="fas fa-file-signature nav-icon"></i>
+                            <p>Hợp đồng đã tạo</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/contract/add" class="nav-link">
+                            <i class="fas fa-plus nav-icon"></i>
+                            <p>Tạo mới hợp đồng</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                {{-- Contract --}}
+                <li class="nav-item">
+                    <a href="/timekeeping" class="nav-link">
+                        <i class="nav-icon fas fa-calendar-alt" aria-hidden="true"></i>
+                        <p>
+                            Chấm công
+                            <i class="right fas fa-angle-right"></i> 
+                        </p>
+                    </a>
                 </li>
 
                 {{-- Account --}}
