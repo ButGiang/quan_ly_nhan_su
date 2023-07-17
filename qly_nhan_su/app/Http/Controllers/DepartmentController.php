@@ -50,16 +50,15 @@ class DepartmentController extends Controller
 
     public function delete(Request $request) {
         $result = $this->phongbanService->delete($request);
-        dd($result);
-        // if($result) {
-        //     return response()->json([
-        //         'error' => false,
-        //         'message' => 'Xóa thành công!'
-        //     ]);
-        //     return location.reload();
-        // }
-        // return response()->json([
-        //     'error' => true
-        // ]);
+        if($result) {
+            return response()->json([
+                'error' => false,
+                'message' => 'Xóa thành công!'
+            ]);
+            return location.reload();
+        }
+        return response()->json([
+            'error' => true
+        ]);
     }
 }

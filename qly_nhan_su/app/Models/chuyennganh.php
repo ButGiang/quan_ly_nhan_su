@@ -10,6 +10,7 @@ class chuyennganh extends Model
     use HasFactory;
 
     protected $table = "chuyennganh";
+    protected $primaryKey = 'id_chuyennganh';
 
     protected $fillable = [
         'id_chuyennganh',

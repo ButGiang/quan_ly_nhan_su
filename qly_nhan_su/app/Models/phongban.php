@@ -10,6 +10,7 @@ class phongban extends Model
     use HasFactory;
 
     protected $table = "phongban";
+    protected $primaryKey = 'id_phongban';
 
     protected $fillable = [
         'id_phongban',
