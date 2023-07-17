@@ -10,37 +10,37 @@
         <div class="card-body">
             <div class="form-group">    
                 <label>Họ & tên đệm</label>
-                <input type="text" name="first_name" value="{{ $nhanvien->value('ho') }}" class="form-control" placeholder="Nhập Họ và tên đệm">
+                <input type="text" name="first_name" value="{{ $nhanvien->ho }}" class="form-control" placeholder="Nhập Họ và tên đệm">
             </div>
 
             <div class="form-group">    
                 <label>Tên</label>
-                <input type="text" name="last_name" value="{{ $nhanvien->value('ten') }}" class="form-control" placeholder="Nhập Tên">
+                <input type="text" name="last_name" value="{{ $nhanvien->ten }}" class="form-control" placeholder="Nhập Tên">
             </div>
 
             <div class="form-group">    
                 <label>Ngày sinh</label>
-                <input type="text" name="birthday" value="{{ $nhanvien->value('ngaysinh') }}" class="form-control" placeholder="Nhập Ngày sinh">
+                <input type="text" name="birthday" value="{{ $nhanvien->ngaysinh }}" class="form-control" placeholder="Nhập Ngày sinh">
             </div>
 
             <div class="form-group">    
                 <label>CCCD</label>
-                <input type="text" name="CCCD" value="{{ $nhanvien->value('CCCD') }}" class="form-control" placeholder="Nhập CCCD">
+                <input type="text" name="CCCD" value="{{ $nhanvien->CCCD }}" class="form-control" placeholder="Nhập CCCD">
             </div>
 
             <div class="form-group">    
                 <label>Email</label>
-                <input type="email" name="email" value="{{ $nhanvien->value('email') }}" class="form-control" placeholder="Nhập email">
+                <input type="email" name="email" value="{{ $nhanvien->email }}" class="form-control" placeholder="Nhập email">
             </div>
 
             <div class="form-group">    
                 <label>Địa chỉ</label>
-                <input type="text" name="address" value="{{ $nhanvien->value('diachi') }}" class="form-control" placeholder="Nhập địa chỉ">
+                <input type="text" name="address" value="{{ $nhanvien->diachi }}" class="form-control" placeholder="Nhập địa chỉ">
             </div>
 
             <div class="form-group">    
                 <label>Số điện thoại</label>
-                <input type="text" name="phone" value="{{ $nhanvien->value('sdt') }}" class="form-control" placeholder="Nhập số điện thoại">
+                <input type="text" name="phone" value="{{ $nhanvien->sdt }}" class="form-control" placeholder="Nhập số điện thoại">
             </div>
 
             <div class="form-group">

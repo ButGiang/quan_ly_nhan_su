@@ -17,8 +17,13 @@
             <div class="form-group">
                 <label>Giới tính</label>
                 <select name="gender" class="form-control">
-                    <option value='1' >Nam</option>
-                    <option value='0'>Nữ</option>
+                    @if($staff->gioitinh==1)
+                        <option value='1' >Nam</option>
+                        <option value='0'>Nữ</option>
+                    @else
+                        <option value='0'>Nữ</option>
+                        <option value='1' >Nam</option>
+                    @endif       
                 </select>
             </div>
 

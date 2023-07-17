@@ -88,4 +88,120 @@ class StaffController extends Controller
             'error' => true
         ]);
     }
+
+    public function search(Request $request) {
+        $departments = phongban::orderBy('id_phongban', 'asc')->get();
+        $majors = chuyennganh::orderBy('id_chuyennganh', 'asc')->get();
+        $levels = trinhdo::orderBy('id_trinhdo', 'asc')->get();
+
+        $search_name = $request->search_name;
+        $search_department = $request->department;
+        $search_major = $request->major;
+        $search_level = $request->level;
+
+        if($search_name) {
+            if($search_department) {
+                if($search_major) {
+                    if($search_level) {
+                        $result = nhanvien::where('ho', 'like', '%'. $search_name. '%')->orWhere('ten', 'like', '%'. $search_name. '%')
+                            ->Where('id_phongban', $search_department)
+                            ->Where('id_chuyennganh', $search_major)
+                            ->Where('id_trinhdo', $search_level)
+                            ->get();
+                    }
+                    else {
+                        $result = nhanvien::where('ho', 'like', '%'. $search_name. '%')->orWhere('ten', 'like', '%'. $search_name. '%')
+                        ->Where('id_phongban', $search_department)
+                        ->Where('id_chuyennganh', $search_major)
+                        ->get();
+                    }
+                }
+                elseif($search_level) {
+                    $result = nhanvien::where('ho', 'like', '%'. $search_name. '%')->orWhere('ten', 'like', '%'. $search_name. '%')
+                            ->Where('id_phongban', $search_department)
+                            ->Where('id_trinhdo', $search_level)
+                            ->get();
+                }
+                else {
+                    $result = nhanvien::where('ho', 'like', '%'. $search_name. '%')->orWhere('ten', 'like', '%'. $search_name. '%')
+                        ->Where('id_phongban', $search_department)
+                        ->get();
+                }
+            }
+            elseif($search_major) {
+                if($search_level) {
+                    $result = nhanvien::where('ho', 'like', '%'. $search_name. '%')->orWhere('ten', 'like', '%'. $search_name. '%')
+                            ->Where('id_chuyennganh', $search_major)
+                            ->Where('id_trinhdo', $search_level)
+                            ->get();
+                }
+                else {
+                    $result = nhanvien::where('ho', 'like', '%'. $search_name. '%')->orWhere('ten', 'like', '%'. $search_name. '%')
+                    ->Where('id_chuyennganh', $search_major)
+                    ->get();
+                }
+            }
+            elseif($search_level) {
+                $result = nhanvien::where('ho', 'like', '%'. $search_name. '%')->orWhere('ten', 'like', '%'. $search_name. '%')
+                            ->Where('id_trinhdo', $search_level)
+                            ->get();
+            }
+            else {
+                $result = nhanvien::where('ho', 'like', '%'. $search_name. '%')->orWhere('ten', 'like', '%'. $search_name. '%')->get();
+            }
+        }
+
+        elseif($search_department) {
+            if($search_major) {
+                if($search_level) {
+                    $result = nhanvien::Where('id_phongban', $search_department)
+                        ->Where('id_chuyennganh', $search_major)
+                        ->Where('id_trinhdo', $search_level)
+                        ->get();
+                }
+                else {
+                    $result = nhanvien::Where('id_phongban', $search_department)
+                    ->Where('id_chuyennganh', $search_major)
+                    ->get();
+                }
+            }
+            elseif($search_level) {
+                $result = nhanvien::Where('id_phongban', $search_department)
+                        ->Where('id_trinhdo', $search_level)
+                        ->get();
+            }
+            else {
+                $result = nhanvien::Where('id_phongban', $search_department)->get();
+            }
+        }
+
+        elseif($search_major) {
+            if($search_level) {
+                $result = nhanvien::Where('id_chuyennganh', $search_major)
+                    ->Where('id_trinhdo', $search_level)
+                    ->get();
+            }
+            else {
+                $result = nhanvien::where('id_chuyennganh', $search_major)
+                ->get();
+            }
+        }
+
+        elseif($search_level) {
+            $result = nhanvien::Where('id_trinhdo', $search_level)
+            ->get();
+        }
+
+        else {
+            // $result = $this->nhanvienService->getDSNV();
+        }
+
+        return view('Staff.list', [
+            'title' => 'Staff list',
+            'staffs' => $result,
+            'departments' => $departments,
+            'majors' => $majors,
+            'levels' => $levels
+        ]);
+    }
 }

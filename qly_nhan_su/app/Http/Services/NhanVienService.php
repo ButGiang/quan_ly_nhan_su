@@ -12,7 +12,7 @@ use App\Models\trinhdo;
 class NhanVienService {
     // gọi vào func staff trong Model Staff
     public function getDSNV() {
-        return nhanvien::where('active', 1)->with('department')->with('major')->with('level')->orderBy('id', 'asc')->paginate(10);
+        return nhanvien::with('department')->with('major')->with('level')->orderBy('id', 'asc')->paginate(10);
     }
 
     public function getNhanVien($id) {

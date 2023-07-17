@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    <form action="/search" method="POST">
+    <form action="/staff/search" method="POST">
         @csrf
         <div class="row" style="margin: 5px 0 0 15px">
             <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
@@ -15,7 +15,7 @@
                 <div class="form-group">
                     <label>Phòng ban</label>
                     <select name='department' class="form-control">
-                        <option>-- Select --</option>
+                        <option value="">-- Select --</option>
                         @foreach($departments as $department)
                             <option value="{{ $department->id_phongban }}"> {{ $department->ten }} </option>
                         @endforeach
@@ -27,7 +27,7 @@
                 <div class="form-group">
                     <label>Chuyên ngành</label>
                     <select name='major' class="form-control">
-                        <option>-- Select --</option>
+                        <option value="">-- Select --</option>
                         @foreach($majors as $major)
                             <option value="{{ $major->id_chuyennganh }}"> {{ $major->ten }} </option>
                         @endforeach
@@ -39,7 +39,7 @@
                 <div class="form-group">
                     <label>Trình độ</label>
                     <select name='level' class="form-control">
-                        <option>-- Select --</option>
+                        <option value="">-- Select --</option>
                         @foreach($levels as $level)
                             <option value="{{ $level->id_trinhdo }}"> {{ $level->ten }} </option>
                         @endforeach

@@ -37,7 +37,7 @@ Route::middleware(['auth'])->group(function() {
         Route::get('/edit/{id}', [StaffController::class, 'edit']);
         Route::post('/edit/{id}', [StaffController::class, 'post_edit']);
         Route::delete('/delete', [StaffController::class, 'delete']);
-        Route::post('/search', [StaffController::class, 'search_by_name']);
+        Route::post('/search', [StaffController::class, 'search']);
     });
     
     Route::prefix('department')->group(function() {
@@ -62,7 +62,10 @@ Route::middleware(['auth'])->group(function() {
         Route::get('/list', [ContractController::class, 'index']);
         Route::get('/add', [ContractController::class, 'create']);
         Route::post('/add', [ContractController::class, 'post_create']);
+        Route::get('/edit/{id_hopdong}', [ContractController::class, 'edit']);
+        Route::post('/edit/{id_hopdong}', [ContractController::class, 'post_edit']);
         Route::delete('/delete', [ContractController::class, 'delete']);
+        Route::post('/search', [ContractController::class, 'search']);
     });
 
     Route::get('timekeeping', [TimeKeepingController::class, 'index']);

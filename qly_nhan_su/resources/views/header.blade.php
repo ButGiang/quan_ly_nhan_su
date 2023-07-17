@@ -11,6 +11,7 @@
 
 <link rel="stylesheet" href="/template/dist/css/adminlte.min.css?v=3.2.0">
 
+<link rel="stylesheet" href="/template/plugins/fullcalendar/main.css">
 
 <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}"/>
 

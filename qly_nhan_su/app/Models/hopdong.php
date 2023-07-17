@@ -22,4 +22,8 @@ class hopdong extends Model
     ];
 
     public $timestamps = false;
+
+    public function nhanvien() {
+        return $this->hasOne(nhanvien::class, 'id', 'id')->withDefault(['ten' => '']);
+    }
 }
