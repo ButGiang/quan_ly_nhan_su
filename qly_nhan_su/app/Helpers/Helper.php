@@ -120,4 +120,72 @@ class Helper {
         }                   
         return $html;
     }
+
+    public static function classify($classify = 0) {
+        if($classify==0) {
+            return '<span class="btn btn-danger btn-xs">Phạt</span>';
+        }
+        else {
+            return '<span class="btn btn-success btn-xs">Thưởng</span>';
+        }
+    }
+
+    public static function status($status = 0) {
+        if($status==0) {
+            return '<span class="btn btn-warning btn-xs">Đang xử lý</span>';
+        }
+        else {
+            return '<span class="btn btn-info btn-xs">Đã xử lý</span>';
+        }
+    }
+
+    public static function reward_list($rewards) {
+        $html = '';
+        foreach($rewards as $reward) {
+            $html .= '
+                <tr>
+                    <td>'. $reward->id_thuongphat .'</td>
+                    <td>'. self::classify($reward->phanloai) .'</td>
+                    <td>'. $reward->ngay .'</td>
+                    <td>'. self::status($reward->trangthai) .'</td>
+                    <td>'. $reward->nhanvien->ho. ' '. $reward->nhanvien->ten .'</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" href="/extra/edit/'. $reward->id_thuongphat .'">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a class="btn btn-danger btn-sm" href="#"
+                        onclick="RemoveRow('. $reward->id_thuongphat .', \'/extra/delete\')">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            ';       
+        }                   
+        return $html;
+    }
+
+    public static function punishment_list($punishments) {
+        $html = '';
+        foreach($punishments as $punishment) {
+            $html .= '
+                <tr>
+                    <td>'. $punishment->id_thuongphat .'</td>
+                    <td>'. self::classify($punishment->phanloai) .'</td>
+                    <td>'. $punishment->ngay .'</td>
+                    <td>'. self::status($punishment->trangthai) .'</td>
+                    <td>'. $punishment->nhanvien->ho. ' '. $punishment->nhanvien->ten .'</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" href="/extra/edit/'. $punishment->id_thuongphat .'">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a class="btn btn-danger btn-sm" href="#"
+                        onclick="RemoveRow('. $punishment->id_thuongphat .', \'/extra/delete\')">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            ';       
+        }                   
+        return $html;
+    }
 }

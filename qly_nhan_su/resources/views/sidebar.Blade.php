@@ -48,6 +48,16 @@
                     </a>
                 </li>
 
+                {{-- Time Keeping --}}
+                <li class="nav-item">
+                    <a href="/timekeeping" class="nav-link">
+                        <i class="nav-icon fas fa-calendar-alt" aria-hidden="true"></i>
+                        <p>
+                            Chấm công
+                        </p>
+                    </a>
+                </li>
+
                 {{-- Staff --}}
                 <li class="nav-item">
                     <a href="#" class="nav-link">
@@ -131,7 +141,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-file-contract" aria-hidden="true"></i>
                         <p>
-                            Hợp đồng
+                            Hợp đồng lao động
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -152,38 +162,21 @@
                     </ul>
                 </li>
 
-                {{-- Time Keeping --}}
-                <li class="nav-item">
-                    <a href="/timekeeping" class="nav-link">
-                        <i class="nav-icon fas fa-calendar-alt" aria-hidden="true"></i>
-                        <p>
-                            Chấm công
-                            <i class="right fas fa-angle-right"></i> 
-                        </p>
-                    </a>
-                </li>
-
                 {{-- reward and punishment --}}
                 <li class="nav-item">
                     <a href="/reward_punishment" class="nav-link">
                         <i class="nav-icon fas fa-expand-alt" aria-hidden="true"></i>
                         <p>
                             Khen thưởng và kỷ luật
-                            <i class="right fas fa-angle-right"></i> 
+                            <i class="right fas fa-angle-left"></i> 
                         </p>
                     </a>
 
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/extra/reward" class="nav-link">
+                            <a href="/extra/reward&punishment" class="nav-link">
                             <i class="fas fa-award nav-icon"></i>
-                            <p>Khen thưởng</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/extra/punishment" class="nav-link">
-                            <i class="fas fa-exclamation nav-icon"></i>
-                            <p>Kỷ luật</p>
+                            <p>Danh sách</p>
                             </a>
                         </li>
                         <li class="nav-item">

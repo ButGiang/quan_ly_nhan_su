@@ -26,7 +26,7 @@
 
             <div class="form-group">
                 <label>Hệ số lương</label>
-                <input type="number" name="salary" class="form-control" step="0.01">
+                <input type="number" name="salary" class="form-control" step="0.01" min="0.1">
             </div>
 
             <div class="form-group">

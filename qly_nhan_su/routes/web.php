@@ -73,13 +73,11 @@ Route::middleware(['auth'])->group(function() {
     Route::get('timekeeping', [TimeKeepingController::class, 'index']);
 
     Route::prefix('extra')->group(function() {
-        Route::get('/reward', [RewardPunishmentController::class, 'reward_index']);
-        Route::get('/punishment', [RewardPunishmentController::class, 'punishment_index']);
+        Route::get('/reward&punishment', [RewardPunishmentController::class, 'index']);
         Route::get('/add', [RewardPunishmentController::class, 'create']);
         Route::post('/add', [RewardPunishmentController::class, 'post_create']);
         Route::get('/edit/{id_thuongphat}', [RewardPunishmentController::class, 'edit']);
         Route::post('/edit/{id_thuongphat}', [RewardPunishmentController::class, 'post_edit']);
         Route::delete('/delete', [RewardPunishmentController::class, 'delete']);
-        Route::post('/search', [RewardPunishmentController::class, 'search']);
     });
 });

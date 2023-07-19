@@ -15,6 +15,7 @@ class thuong_phat extends Model
     protected $fillable = [
         'id_thuongphat',
         'phanloai',
+        'ngay',
         'noidung',
         'trangthai',
         'id'

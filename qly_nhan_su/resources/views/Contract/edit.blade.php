@@ -6,7 +6,7 @@
         <div class="card-body">
             <div class="form-group">
                 <label>Ngày kí</label>
-                <input type="date" name="signing_day" id='signing_day' class="form-control" value="{{ $contract->ngayki }}">
+                <input type="date" name="signing_day" class="form-control" value="{{ $contract->ngayki }}">
             </div>
 
             <div class="form-group">
@@ -26,7 +26,7 @@
 
             <div class="form-group">
                 <label>Hệ số lương</label>
-                <input type="number" name="salary" class="form-control" value="{{ $contract->hesoluong }}" step="0.01">
+                <input type="number" name="salary" class="form-control" value="{{ $contract->hesoluong }}" step="0.01" min="0">
             </div>
 
             <div class="form-group">

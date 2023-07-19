@@ -20,12 +20,12 @@
 
             <div class="form-group">    
                 <label>Ngày sinh</label>
-                <input type="text" name="birthday" value="{{ $nhanvien->ngaysinh }}" class="form-control" placeholder="Nhập Ngày sinh">
+                <input type="date" name="birthday" value="{{ $nhanvien->ngaysinh }}" class="form-control" placeholder="Nhập Ngày sinh">
             </div>
 
             <div class="form-group">    
                 <label>CCCD</label>
-                <input type="text" name="CCCD" value="{{ $nhanvien->CCCD }}" class="form-control" placeholder="Nhập CCCD">
+                <input type="number" name="CCCD" value="{{ $nhanvien->CCCD }}" class="form-control" placeholder="Nhập CCCD">
             </div>
 
             <div class="form-group">    
@@ -40,7 +40,7 @@
 
             <div class="form-group">    
                 <label>Số điện thoại</label>
-                <input type="text" name="phone" value="{{ $nhanvien->sdt }}" class="form-control" placeholder="Nhập số điện thoại">
+                <input type="number" name="phone" value="{{ $nhanvien->sdt }}" class="form-control" placeholder="Nhập số điện thoại">
             </div>
 
             <div class="form-group">
