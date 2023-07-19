@@ -6,7 +6,7 @@
         <div class="row" style="margin: 5px 0 0 15px">
             <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
                 <div class="form-group" style="margin-top: 30px">
-                    <label style="margin: auto">Tìm kiếm theo ngày kí</label>
+                    <label style="margin: auto">Tìm kiếm hợp đồng trong khoảng</label>
                 </div>
             </div>
 

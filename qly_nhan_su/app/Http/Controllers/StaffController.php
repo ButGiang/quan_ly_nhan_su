@@ -74,7 +74,7 @@ class StaffController extends Controller
         return redirect('/staff/list');
     }
 
-    public function delete(Request $request): JsonResponse {
+    public function delete(Request $request) {
         $result = $this->nhanvienService->delete($request);
 
         if($result) {

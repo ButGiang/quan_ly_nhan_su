@@ -50,7 +50,7 @@ class MajorController extends Controller
         return redirect('/major/list');
     }
 
-    public function delete(Request $request): JsonResponse {
+    public function delete(Request $request) {
         $result = $this->chuyennganhService->delete($request);
 
         if($result) {

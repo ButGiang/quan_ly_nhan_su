@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Services\HopDongService;
 
 use App\Models\hopdong;
+use App\Models\nhanvien;
 
 class ContractController extends Controller
 {
@@ -28,14 +29,15 @@ class ContractController extends Controller
 
         if($from_day) {
             if($to_day) {
-                $result = hopdong::whereBetween('ngayki', [$from_day, $to_day])->get();
+                $result = hopdong::where('ngaybatdau', '>=', $from_day)->where('ngayketthuc', '<=', $to_day)->get();
             }
             else {
-                $result = hopdong::where('ngayki', '>=', $from_day)->get();
+                $result = hopdong::where('ngaybatdau', '>=', $from_day)->get();
             }
         }
         elseif($to_day) {
-            $result = hopdong::where('ngayki', '<=', $to_day)->get();
+            $result = hopdong::where('ngayketthuc', '<=', $to_day)->get();
+
         }
         else {
             $result = $this->hopdongService->getDSHD();
@@ -44,6 +46,53 @@ class ContractController extends Controller
         return view('Contract.list', [
             'title' => 'Danh sách hợp đồng',
             'contracts' => $result
+        ]);
+    }
+
+    public function create() {
+        $staffs = nhanvien::whereNotIn('id', hopdong::select('id'))->get();
+        $date = date('Y-m-d');
+
+        return view('Contract.add', [
+            'title' => 'Add Contract',
+            'staffs' => $staffs,
+            'date' => $date
+        ]);
+    }
+
+    public function post_create(Request $request) {
+        $this->hopdongService->create($request);
+
+        return redirect()->back()->withInput();
+    }
+
+    public function edit(hopdong $id_hopdong) {
+        $staffs = nhanvien::whereNotIn('id', hopdong::select('id'))->get();
+        return view('Contract.edit', [
+            'title' => 'Edit Contract',
+            'contract' => $id_hopdong,
+            'staffs' => $staffs
+        ]);
+    }
+
+    public function post_edit(Request $request, hopdong $id_hopdong) {
+        $this->hopdongService->update($request, $id_hopdong);
+        
+        return redirect('/contract/list');
+    }
+
+    public function delete(Request $request) {
+        $result = $this->hopdongService->delete($request);
+
+        if($result) {
+            return response()->json([
+                'error' => false,
+                'message' => 'Xóa thành công!'
+            ]);
+            return location.reload();
+        }
+        return response()->json([
+            'error' => true
         ]);
     }
 }

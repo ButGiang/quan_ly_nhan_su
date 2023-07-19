@@ -125,13 +125,13 @@
                                 </span>
                                 
                                 <div class="icheck-primary d-inline ml-2">
-                                    <input type="checkbox" value="" name="todo1" id="todoCheck1">
+                                    <input type="checkbox" value="" name="todo1" id="todoCheck1" checked="">
                                     <label for="todoCheck1"></label>
                                 </div>
                                 
-                                <span class="text">Design a nice theme</span>
+                                <span class="text">Hoàn thành giao diện cho dự án</span>
                                 
-                                <small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>
+                                <small class="badge badge-danger"><i class="far fa-clock"></i> 2 ngày</small>
                                 
                                 <div class="tools">
                                     <i class="fas fa-edit"></i>
@@ -144,11 +144,11 @@
                                     <i class="fas fa-ellipsis-v"></i>
                                 </span>
                                 <div class="icheck-primary d-inline ml-2">
-                                    <input type="checkbox" value="" name="todo2" id="todoCheck2" checked="">
+                                    <input type="checkbox" value="" name="todo2" id="todoCheck2">
                                     <label for="todoCheck2"></label>
                                 </div>
-                                <span class="text">Make the theme responsive</span>
-                                <small class="badge badge-info"><i class="far fa-clock"></i> 4 hours</small>
+                                <span class="text">Làm responsive</span>
+                                <small class="badge badge-warning"><i class="far fa-clock"></i> 1 tuần</small>
                                 <div class="tools">
                                     <i class="fas fa-edit"></i>
                                     <i class="fas fa-trash-o"></i>
@@ -163,8 +163,8 @@
                                     <input type="checkbox" value="" name="todo3" id="todoCheck3">
                                     <label for="todoCheck3"></label>
                                 </div>
-                                <span class="text">Let theme shine like a star</span>
-                                <small class="badge badge-warning"><i class="far fa-clock"></i> 1 day</small>
+                                <span class="text">Thiết kế cơ sở dữ liệu</span>
+                                <small class="badge badge-primary"><i class="far fa-clock"></i> 2 tuần</small>
                                 <div class="tools">
                                     <i class="fas fa-edit"></i>
                                     <i class="fas fa-trash-o"></i>
@@ -179,8 +179,8 @@
                                     <input type="checkbox" value="" name="todo4" id="todoCheck4">
                                     <label for="todoCheck4"></label>
                                 </div>
-                                <span class="text">Let theme shine like a star</span>
-                                <small class="badge badge-success"><i class="far fa-clock"></i> 3 days</small>
+                                <span class="text">Tạo dưng Back-end bằng Laravel</span>
+                                <small class="badge badge-success"><i class="far fa-clock"></i> 4 tuần </small>
                                 <div class="tools">
                                     <i class="fas fa-edit"></i>
                                     <i class="fas fa-trash-o"></i>
@@ -195,8 +195,8 @@
                                     <input type="checkbox" value="" name="todo5" id="todoCheck5">
                                     <label for="todoCheck5"></label>
                                 </div>
-                                <span class="text">Check your messages and notifications</span>
-                                <small class="badge badge-primary"><i class="far fa-clock"></i> 1 week</small>
+                                <span class="text">Hoàn thiện bài thực tập</span>
+                                <small class="badge badge-warning"><i class="far fa-clock"></i> 1 tuần</small>
                                 <div class="tools">
                                     <i class="fas fa-edit"></i>
                                     <i class="fas fa-trash-o"></i>
@@ -206,7 +206,7 @@
                     </div>
                     
                     <div class="card-footer clearfix">
-                        <button type="button" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Add item</button>
+                        <button type="button" class="btn btn-primary float-right"><i class="fas fa-plus"></i> Thêm mới</button>
                     </div>
                 </div>
             </div>

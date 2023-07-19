@@ -105,7 +105,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book" aria-hidden="true"></i>
                         <p>
-                            Chuyên ngành
+                            Chức vụ
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
@@ -114,13 +114,13 @@
                         <li class="nav-item">
                             <a href="/major/list" class="nav-link">
                             <i class="fas fa-clipboard-list nav-icon"></i>
-                            <p>Danh sách chuyên ngành</p>
+                            <p>Danh sách</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/major/add" class="nav-link">
                             <i class="fas fa-plus nav-icon"></i>
-                            <p>Thêm mới Chuyên ngành</p>
+                            <p>Thêm mới</p>
                             </a>
                         </li>
                     </ul>
@@ -146,13 +146,13 @@
                         <li class="nav-item">
                             <a href="/contract/add" class="nav-link">
                             <i class="fas fa-plus nav-icon"></i>
-                            <p>Tạo mới hợp đồng</p>
+                            <p>Tạo hợp đồng mới</p>
                             </a>
                         </li>
                     </ul>
                 </li>
 
-                {{-- Contract --}}
+                {{-- Time Keeping --}}
                 <li class="nav-item">
                     <a href="/timekeeping" class="nav-link">
                         <i class="nav-icon fas fa-calendar-alt" aria-hidden="true"></i>
@@ -161,6 +161,38 @@
                             <i class="right fas fa-angle-right"></i> 
                         </p>
                     </a>
+                </li>
+
+                {{-- reward and punishment --}}
+                <li class="nav-item">
+                    <a href="/reward_punishment" class="nav-link">
+                        <i class="nav-icon fas fa-expand-alt" aria-hidden="true"></i>
+                        <p>
+                            Khen thưởng và kỷ luật
+                            <i class="right fas fa-angle-right"></i> 
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/extra/reward" class="nav-link">
+                            <i class="fas fa-award nav-icon"></i>
+                            <p>Khen thưởng</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/extra/punishment" class="nav-link">
+                            <i class="fas fa-exclamation nav-icon"></i>
+                            <p>Kỷ luật</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/extra/add" class="nav-link">
+                            <i class="fas fa-plus nav-icon"></i>
+                            <p>Tạo mới</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 {{-- Account --}}
