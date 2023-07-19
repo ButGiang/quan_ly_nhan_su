@@ -15,6 +15,9 @@
                     <p class="text-muted text-center">Phòng ban: {{ $phongban }}</p>
                     <ul class="list-group list-group-unbordered mb-3">
                         <li class="list-group-item">
+                            <b>Ngày sinh</b> <span class="float-right">{{ $nhanvien->value('ngaysinh') }}</span>
+                        </li>
+                        <li class="list-group-item">
                             <b>Email</b> <span class="float-right">{{ $nhanvien->value('email') }}</span>
                         </li>
                         <li class="list-group-item">
@@ -31,12 +34,12 @@
             </div>         
         </div>
 
-        <div class="col-md-8" style="margin-top: 5px">
+        <div class="col-md-8" style="margin-top: 5px;">
             <div class="row">
                 <div class="col-md-3">
-                    <div class="sticky-top mb-3">
+                    <div class="mb-3">
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header" style="margin-top: 2px;">
                                 <h4 class="card-title">Sự kiện</h4>
                             </div>
         
@@ -86,7 +89,7 @@
                 <div class="col-md-9">
                     <div class="card card-primary">
                         <div class="card-body p-0">
-                            <div id="calendar"></div>
+                            <div id="calendar" style="max-height: 480px"></div>
                         </div>
                     </div>
                 </div>  
@@ -210,6 +213,10 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="col-md-6" style="margin-top: 200px">
+            <h1>abc</h1>
         </div>
     </div>
 @endsection

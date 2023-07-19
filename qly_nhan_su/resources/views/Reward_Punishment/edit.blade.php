@@ -6,7 +6,15 @@
         <div class="card-body">
             <div class="form-group">
                 <label>Phân loại</label>
-                <input type="number" name="phanloai" class="form-control" min="0" max="1" value="{{ $re_pu->phanloai }}">
+                <select name="phanloai" class="form-control">
+                    @if($re_pu->phanloai==1)
+                        <option value='1' >Thưởng</option>
+                        <option value='0'>Phạt</option>
+                    @else
+                        <option value='0'>Phạt</option>
+                        <option value='1' >Thưởng</option>
+                    @endif   
+                </select> 
             </div>
 
             <div class="form-group">
