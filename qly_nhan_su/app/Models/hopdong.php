@@ -18,13 +18,17 @@ class hopdong extends Model
         'ngayketthuc',
         'ngayki',
         'noidung',
-        'hesoluong',
-        'id'
+        'id',
+        'id_nguoitao'
     ];
 
     public $timestamps = false;
 
     public function nhanvien() {
         return $this->hasOne(nhanvien::class, 'id', 'id')->withDefault(['ten' => '']);
+    }
+
+    public function nguoitaohopdong() {
+        return $this->hasOne(nhanvien::class, 'id', 'id_nguoitao')->withDefault(['ten' => '']);
     }
 }

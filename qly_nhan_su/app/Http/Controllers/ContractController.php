@@ -40,7 +40,7 @@ class ContractController extends Controller
 
         }
         else {
-            $result = $this->hopdongService->getDSHD();
+            $result = hopdong::where('id_hopdong', -1)->get();
         }
 
         return view('Contract.list', [

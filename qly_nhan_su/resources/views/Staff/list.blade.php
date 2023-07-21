@@ -7,7 +7,7 @@
             <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
                 <div class="form-group">
                     <label>Tên nhân viên</label>
-                    <input type="text" name="search_name" id="search_name" class="form-control">
+                    <input type="text" name="search_name" class="form-control">
                 </div>
             </div>
 

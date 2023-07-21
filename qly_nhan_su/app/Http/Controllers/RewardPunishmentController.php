@@ -27,11 +27,44 @@ class RewardPunishmentController extends Controller
         ]);
     }
 
+    public function search(Request $request) {
+        $name = $request->search_name;
+        $status = $request->search_status;
+
+        if($name) {
+            if($status) {
+                $id = nhanvien::select('id')->where('ho', 'like', '%'. $name. '%')->orWhere('ten', 'like', '%'. $name. '%')->get();
+                $result_r = thuong_phat::where('id', $id->value('id'))->where('trangthai', $status)->where('phanloai', 1)->get();
+                $result_p = thuong_phat::where('id', $id->value('id'))->where('trangthai', $status)->where('phanloai', 0)->get();
+            }
+            else {
+                $id = nhanvien::select('id')->where('ho', 'like', '%'. $name. '%')->orWhere('ten', 'like', '%'. $name. '%')->get();
+                $result_r = thuong_phat::where('id', $id->value('id'))->where('phanloai', 1)->get();
+                $result_p = thuong_phat::where('id', $id->value('id'))->where('phanloai', 0)->get();
+            }
+        }
+        elseif(!is_null($status)) {
+            $result_r = thuong_phat::where('trangthai', $status)->where('phanloai', 1)->get();
+            $result_p = thuong_phat::where('trangthai', $status)->where('phanloai', 0)->get();
+        }
+        else {
+            $result_r = $result_p = thuong_phat::where('id_thuongphat', -1)->get();
+        }
+
+        return view('Reward_Punishment.list', [
+            'title' => 'Danh sách ứng lương',
+            'rewards' => $result_r,
+            'punishments' => $result_p
+        ]);
+    }
+
     public function create() {
         $staffs = nhanvien::orderBy('id', 'asc')->get();
+        $date = date('Y-m-d');
         return view('Reward_Punishment.add', [
             'title' => 'Add Reward OR Punishment',
-            'staffs' => $staffs
+            'staffs' => $staffs,
+            'day' => $date
         ]);
     }
 

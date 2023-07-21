@@ -6,27 +6,24 @@
         <div class="card-body">
             <div class="form-group">
                 <label>Ngày kí</label>
-                <input type="date" name="signing_day" id='signing_day' class="form-control" value="{{ $date }}">
+                <input type="date" name="signing_day" class="form-control" value="{{ $date }}">
             </div>
 
-            <div class="form-group">
-                <label>Ngày bắt đầu theo hợp đồng</label>
-                <input type="date" name="start_day" class="form-control">
-            </div>
-            
-            <div class="form-group">
-                <label>Ngày kết thúc theo hợp đồng</label>
-                <input type="date" name="end_day" class="form-control">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Ngày bắt đầu theo hợp đồng</label>
+                    <input type="date" name="start_day" class="form-control">
+                </div>
+                
+                <div class="form-group col-md-6">
+                    <label>Ngày kết thúc theo hợp đồng</label>
+                    <input type="date" name="end_day" class="form-control">
+                </div>
             </div>
 
             <div class="form-group">
                 <label>Nội dung hợp đồng</label>
                 <textarea name="content" class="form-control"></textarea>
-            </div>
-
-            <div class="form-group">
-                <label>Hệ số lương</label>
-                <input type="number" name="salary" class="form-control" step="0.01" min="0.1">
             </div>
 
             <div class="form-group">
@@ -40,7 +37,8 @@
         </div>
 
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Tạo</button>
+            <button type='button' class="btn btn-danger" onclick="history.back();">Thoát</button>
+            <button type="submit" class="btn btn-primary float-right">Thêm</button>
         </div>
         
         @csrf

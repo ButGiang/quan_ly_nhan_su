@@ -1,8 +1,40 @@
 @extends('layout')
 
 @section('content')
-    <div class="row" style="margin: 1px 0 0 19px">
+    <form action="/extra/search" method="POST">
+        @csrf
+        <div class="row" style="margin: 5px 15px 0 15px; border-bottom: 1px solid black">
 
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Tên nhân viên</label>
+                    <input type="text" name="search_name" class="form-control">
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Trạng thái</label>
+                    <select name='search_status' class="form-control">
+                        <option value="">-- Select --</option>
+                        <option value="1">Đã xử lý</option>
+                        <option value="0">Đang xử lý</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col-md-2" style="margin: 25px 0 0 10px">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-lg btn-default">
+                        Search 
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="row" style="margin: 1px 0 0 19px;">
         <div class="col-md-6">
             <div class="form-group" style="text-align: center; height:100%; border-right: 1px solid black;">
                 <label style='margin:30px 19px 0 0'>Khen thưởng</label>

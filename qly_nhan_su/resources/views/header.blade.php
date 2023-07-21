@@ -15,6 +15,12 @@
 
 <meta name="csrf-token" id="csrf-token" content="{{ csrf_token() }}"/>
 
+<style>
+    .mini-menu {
+        margin-left: 15px;
+    }
+</style>
+
 @yield('header')
 
 

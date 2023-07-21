@@ -1,26 +1,26 @@
 @extends('layout')
 
 @section('content')
-    <form action="/contract/search" method="POST">
+    <form action="/advanceSalary/search" method="POST">
         @csrf
         <div class="row" style="margin: 5px 0 0 15px">
+
             <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-                <div class="form-group" style="margin-top: 30px">
-                    <label style="margin: auto">Tìm kiếm hợp đồng trong khoảng</label>
+                <div class="form-group">
+                    <label>Tên nhân viên</label>
+                    <input type="text" name="search_name" class="form-control">
                 </div>
             </div>
 
             <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
                 <div class="form-group">
-                    <label>Từ ngày</label>
-                    <input type="date" name="from_day" class="form-control">
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12">
-                <div class="form-group">
-                    <label>Đến ngày</label>
-                    <input type="date" name="to_day" class="form-control">
+                    <label>Trạng thái</label>
+                    <select name='search_status' class="form-control">
+                        <option value="">-- Select --</option>
+                        <option value="1">Đã xử lý</option>
+                        <option value="0">Đang xử lý</option>
+                        <option value="-1">Đã hủy</option>
+                    </select>
                 </div>
             </div>
 
@@ -40,15 +40,15 @@
             <tr>
                 <th>Id</th>
                 <th>Tên nhân viên</th>
-                <th>Ngày kí</th>
-                <th>Ngày bắt đầu</th>
-                <th>Ngày kết thúc</th>
+                <th>Ngày</th>
+                <th>Số tiền</th>
+                <th>Trạng thái</th>
                 <th></th>
             </tr>
         </thead>
 
         <tbody>
-            {!! \App\Helpers\Helper::contract_list($contracts) !!}
+            {!! \App\Helpers\Helper::advSalary_list($advSalarys) !!}
         </tbody>
     </table>
 @endsection

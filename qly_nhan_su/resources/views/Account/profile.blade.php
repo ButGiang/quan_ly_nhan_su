@@ -8,29 +8,40 @@
     <!-- form start -->
     <form action="/profile" method="POST" enctype="multipart/form-data">
         <div class="card-body">
-            <div class="form-group">    
-                <label>Họ & tên đệm</label>
-                <input type="text" name="first_name" value="{{ $nhanvien->ho }}" class="form-control" placeholder="Nhập Họ và tên đệm">
+            <div class="row">
+                <div class="form-group col-md-6">    
+                    <label>Họ & tên đệm</label>
+                    <input type="text" name="first_name" value="{{ $nhanvien->ho }}" class="form-control" placeholder="Nhập Họ và tên đệm">
+                </div>
+    
+                <div class="form-group col-md-6">    
+                    <label>Tên</label>
+                    <input type="text" name="last_name" value="{{ $nhanvien->ten }}" class="form-control" placeholder="Nhập Tên">
+                </div>
             </div>
 
-            <div class="form-group">    
-                <label>Tên</label>
-                <input type="text" name="last_name" value="{{ $nhanvien->ten }}" class="form-control" placeholder="Nhập Tên">
+            <div class="row">
+                <div class="form-group col-md-6">    
+                    <label>Ngày sinh</label>
+                    <input type="date" name="birthday" value="{{ $nhanvien->ngaysinh }}" class="form-control" placeholder="Nhập Ngày sinh">
+                </div>
+    
+                <div class="form-group col-md-6">    
+                    <label>CCCD</label>
+                    <input type="number" name="CCCD" value="{{ $nhanvien->CCCD }}" class="form-control" placeholder="Nhập CCCD">
+                </div>
             </div>
 
-            <div class="form-group">    
-                <label>Ngày sinh</label>
-                <input type="date" name="birthday" value="{{ $nhanvien->ngaysinh }}" class="form-control" placeholder="Nhập Ngày sinh">
-            </div>
+            <div class="row">                   
+                <div class="form-group col-md-6">    
+                    <label>Số điện thoại</label>
+                    <input type="number" name="phone" value="{{ $nhanvien->sdt }}" class="form-control" placeholder="Nhập số điện thoại">
+                </div>
 
-            <div class="form-group">    
-                <label>CCCD</label>
-                <input type="number" name="CCCD" value="{{ $nhanvien->CCCD }}" class="form-control" placeholder="Nhập CCCD">
-            </div>
-
-            <div class="form-group">    
-                <label>Email</label>
-                <input type="email" name="email" value="{{ $nhanvien->email }}" class="form-control" placeholder="Nhập email">
+                <div class="form-group col-md-6">    
+                    <label>Email</label>
+                    <input type="email" name="email" value="{{ $nhanvien->email }}" class="form-control" placeholder="Nhập email">
+                </div>
             </div>
 
             <div class="form-group">    
@@ -38,14 +49,9 @@
                 <input type="text" name="address" value="{{ $nhanvien->diachi }}" class="form-control" placeholder="Nhập địa chỉ">
             </div>
 
-            <div class="form-group">    
-                <label>Số điện thoại</label>
-                <input type="number" name="phone" value="{{ $nhanvien->sdt }}" class="form-control" placeholder="Nhập số điện thoại">
-            </div>
-
             <div class="form-group">
                 <label>Avatar</label>
-                <input type="file" class="form-control" id="upload" name='avatar'>
+                <input type="file" class="form-control col-md-3" id="upload" name='avatar'>
                 <div id="image_show">
                     <a href="{{ $avatar }}">
                         <img src="{{ $avatar }}" width="100px" height="120px" style="margin-top: 5px">
@@ -58,7 +64,8 @@
         <!-- /.card-body -->
 
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Cập nhật</button>
+            <button type='button' class="btn btn-danger" onclick="history.back();">Thoát</button>
+            <button type="submit" class="btn btn-primary float-right">Cập nhật</button>
         </div>
         @csrf
     </form>

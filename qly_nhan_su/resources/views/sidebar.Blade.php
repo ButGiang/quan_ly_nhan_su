@@ -70,13 +70,13 @@
 
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/staff/list" class="nav-link">
+                            <a href="/staff/list" class="nav-link mini-menu">
                             <i class="fas fa-list-ul nav-icon"></i>
                             <p>Danh sách nhân viên</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/staff/add" class="nav-link">
+                            <a href="/staff/add" class="nav-link mini-menu">
                             <i class="fas fa-user-plus nav-icon"></i>
                             <p>Thêm mới nhân viên</p>
                             </a>
@@ -96,13 +96,13 @@
 
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/department/list" class="nav-link">
+                            <a href="/department/list" class="nav-link mini-menu">
                             <i class="fas fa-clipboard-list nav-icon"></i>
                             <p>Danh sách phòng ban</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/department/add" class="nav-link">
+                            <a href="/department/add" class="nav-link mini-menu">
                             <i class="fas fa-plus nav-icon"></i>
                             <p>Phòng ban mới</p>
                             </a>
@@ -122,13 +122,13 @@
 
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/major/list" class="nav-link">
+                            <a href="/major/list" class="nav-link mini-menu">
                             <i class="fas fa-clipboard-list nav-icon"></i>
                             <p>Danh sách</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/major/add" class="nav-link">
+                            <a href="/major/add" class="nav-link mini-menu">
                             <i class="fas fa-plus nav-icon"></i>
                             <p>Thêm mới</p>
                             </a>
@@ -148,13 +148,13 @@
 
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/contract/list" class="nav-link">
+                            <a href="/contract/list" class="nav-link mini-menu">
                             <i class="fas fa-file-signature nav-icon"></i>
                             <p>Hợp đồng đã tạo</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/contract/add" class="nav-link">
+                            <a href="/contract/add" class="nav-link mini-menu">
                             <i class="fas fa-plus nav-icon"></i>
                             <p>Tạo hợp đồng mới</p>
                             </a>
@@ -164,7 +164,7 @@
 
                 {{-- reward and punishment --}}
                 <li class="nav-item">
-                    <a href="/reward_punishment" class="nav-link">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-expand-alt" aria-hidden="true"></i>
                         <p>
                             Khen thưởng và kỷ luật
@@ -174,15 +174,85 @@
 
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/extra/reward&punishment" class="nav-link">
+                            <a href="/extra/reward&punishment" class="nav-link mini-menu">
                             <i class="fas fa-award nav-icon"></i>
                             <p>Danh sách</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/extra/add" class="nav-link">
+                            <a href="/extra/add" class="nav-link mini-menu">
                             <i class="fas fa-plus nav-icon"></i>
                             <p>Tạo mới</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                {{-- Salary --}}
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-dollar-sign" aria-hidden="true"></i> 
+                        <p>
+                            Quản lý lương
+                            <i class="right fas fa-angle-left"></i> 
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/salary/default" class="nav-link mini-menu">
+                                <i class="fas fa-money-bill-wave-alt nav-icon"></i><i class="fas "></i>
+                                <p>Lương cố định</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/salary/bonus" class="nav-link mini-menu">
+                                <i class="fas fa-money-bill-wave nav-icon"></i>
+                                <p>Lương theo tháng</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/salary/list" class="nav-link mini-menu">
+                                <i class="fas fa-money-check-alt nav-icon"></i>
+                                <p>Bảng lương</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/salary/category" class="nav-link mini-menu">
+                                <i class="fas fa-receipt nav-icon"></i>
+                                <p>Danh mục lương</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/salary/formula" class="nav-link mini-menu">
+                                <i class="fas fa-calculator nav-icon"></i>
+                                <p>Công thức tính lương </p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                {{-- Salary advance --}}
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-wallet" aria-hidden="true"></i> 
+                        <p>
+                            Ứng lương
+                            <i class="right fas fa-angle-left"></i> 
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/advanceSalary/list" class="nav-link mini-menu">
+                                <i class="fas fa-list nav-icon"></i>
+                                <p>Danh sách</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/advanceSalary/add" class="nav-link mini-menu">
+                                <i class="fas fa-plus nav-icon"></i>
+                                <p>Tạo yêu cầu</p>
                             </a>
                         </li>
                     </ul>
@@ -200,19 +270,19 @@
 
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/profile" class="nav-link">
+                            <a href="/profile" class="nav-link mini-menu">
                             <i class="fas fa-user-edit nav-icon"></i>
                             <p>Thông tin cá nhân</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href='/updatePass/{{ $email }}/{{ $token }}' class="nav-link">
+                            <a href='/updatePass/{{ $email }}/{{ $token }}' class="nav-link mini-menu">
                             <i class="fas fa-unlock nav-icon"></i>
                             <p>Đổi mật khẩu</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/logout" class="nav-link">
+                            <a href="/logout" class="nav-link mini-menu">
                             <i class="fas fa-sign-out-alt nav-icon"></i>
                             <p>Đăng xuất</p>
                             </a>

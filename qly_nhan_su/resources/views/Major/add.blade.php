@@ -12,7 +12,8 @@
         <!-- /.card-body -->
 
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Tạo</button>
+            <button type='button' class="btn btn-danger" onclick="history.back();">Thoát</button>
+            <button type="submit" class="btn btn-primary float-right">Thêm</button>
         </div>
         
         @csrf

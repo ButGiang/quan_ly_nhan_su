@@ -19,7 +19,7 @@ class Helper {
             return '<span class="btn btn-info btn-xs">Nữ</span>';
         }
         else {
-            return '<span class="btn btn-info btn-xs">Nam</span>';
+            return '<span class="btn btn-primary btn-xs">Nam</span>';
         }
     }
 
@@ -134,8 +134,11 @@ class Helper {
         if($status==0) {
             return '<span class="btn btn-warning btn-xs">Đang xử lý</span>';
         }
+        elseif($status==1) {
+            return '<span class="btn btn-success btn-xs">Đã xử lý</span>';
+        }
         else {
-            return '<span class="btn btn-info btn-xs">Đã xử lý</span>';
+            return '<span class="btn btn-danger btn-xs">Đã hủy</span>';
         }
     }
 
@@ -181,6 +184,28 @@ class Helper {
                         <a class="btn btn-danger btn-sm" href="#"
                         onclick="RemoveRow('. $punishment->id_thuongphat .', \'/extra/delete\')">
                             <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            ';       
+        }                   
+        return $html;
+    }
+
+    public static function advSalary_list($advSalarys) {
+        $html = '';
+        foreach($advSalarys as $advSalary) {
+            $html .= '
+                <tr>
+                    <td>'. $advSalary->id_ungluong .'</td>
+                    <td>'. $advSalary->nhanvien->ho. ' '. $advSalary->nhanvien->ten .'</td>
+                    <td>'. $advSalary->ngay .'</td>
+                    <td>'. $advSalary->sotien .'</td>
+                    <td>'. self::status($advSalary->trangthai) .'</td>
+
+                    <td>
+                        <a class="btn btn-primary btn-sm" href="/advanceSalary/edit/'. $advSalary->id_ungluong .'">
+                            <i class="fas fa-edit"></i>
                         </a>
                     </td>
                 </tr>

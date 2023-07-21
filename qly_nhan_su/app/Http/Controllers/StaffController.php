@@ -193,7 +193,7 @@ class StaffController extends Controller
         }
 
         else {
-            // $result = $this->nhanvienService->getDSNV();
+            $result = nhanvien::where('id', -1)->get();
         }
 
         return view('Staff.list', [

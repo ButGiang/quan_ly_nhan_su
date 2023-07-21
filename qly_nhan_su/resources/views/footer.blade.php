@@ -10,6 +10,8 @@
 
 <script src="/template/plugins/fullcalendar/main.js"></script>
 
+<script src="/template//plugins/chart.js/Chart.min.js"></script>
+
 <script src="/my_js/main.js"></script>
 
 <script>
@@ -177,7 +179,33 @@
         // Remove event from text input
         $('#new-event').val('')
       })
+
+      //---------------------
+      //- STACKED BAR CHART -
+      //---------------------
+      var stackedBarChartCanvas = $('#stackedBarChart').get(0).getContext('2d')
+      var stackedBarChartData = $.extend(true, {}, barChartData)
+
+      var stackedBarChartOptions = {
+        responsive              : true,
+        maintainAspectRatio     : false,
+        scales: {
+          xAxes: [{
+            stacked: true,
+          }],
+          yAxes: [{
+            stacked: true
+          }]
+        }
+      }
+
+      new Chart(stackedBarChartCanvas, {
+        type: 'bar',
+        data: stackedBarChartData,
+        options: stackedBarChartOptions
+      })
     })
 </script>
+
 
 @yield('footer')

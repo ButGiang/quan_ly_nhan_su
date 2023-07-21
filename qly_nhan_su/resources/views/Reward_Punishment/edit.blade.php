@@ -40,19 +40,15 @@
                 </select>
             </div>
 
-            <div class="form-group">
-                <label>Nhân viên</label>
-                <select name="staff" class="form-control">
-                    <option value='{{ $re_pu->id }}'>{{ $re_pu->nhanvien->ho. ' '. $re_pu->nhanvien->ten}}</option>
-                    @foreach($staffs as $staff) 
-                        <option value='{{ $staff->id }}'>{{ $staff->ho. ' '. $staff->ten }}</option>
-                    @endforeach
-                </select>
+            <div class="form-group float-right">
+                <label>Nhân viên:</label>
+                <div>{{ $re_pu->nhanvien->ho. ' '. $re_pu->nhanvien->ten}}</div>
             </div>
         </div>
 
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Cập nhật</button>
+            <button type='button' class="btn btn-danger" onclick="history.back();">Thoát</button>
+            <button type="submit" class="btn btn-primary float-right">Cập nhật</button>
         </div>
 
         @csrf

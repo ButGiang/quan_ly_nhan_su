@@ -8,7 +8,7 @@ use App\Models\hopdong;
 
 class HopDongService {
     public function getDSHD() {
-        return hopdong::orderBy('id', 'asc')->paginate(10);
+        return hopdong::orderBy('id_hopdong', 'asc')->paginate(10);
     }
 
     public function getHD($id_hopdong) {
@@ -22,8 +22,8 @@ class HopDongService {
                 'ngaybatdau' => $request->input('start_day'),
                 'ngayketthuc' => $request->input('end_day'),
                 'noidung' => $request->input('content'),
-                'hesoluong' => (int) $request->input('salary'),
-                'id' => (int) $request->input('staff')
+                'id' => (int) $request->input('staff'),
+                'id_nguoitao' => (int) Auth::user()->id
             ]);
             $request->session()->flash('success', 'Tạo hợp đồng mới thành công!');
         }
@@ -39,8 +39,6 @@ class HopDongService {
         $hopdong->ngaybatdau = $request->input('start_day');
         $hopdong->ngayketthuc = $request->input('end_day');
         $hopdong->noidung = (string) $request->input('content');
-        $hopdong->hesoluong = (string) $request->input('salary');
-        $hopdong->id = $request->input('staff');
         $hopdong->save();
 
         $request->session()->flash('success', 'Cập nhật thành công');

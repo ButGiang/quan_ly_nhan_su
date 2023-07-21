@@ -9,14 +9,16 @@
                 <input type="date" name="signing_day" class="form-control" value="{{ $contract->ngayki }}">
             </div>
 
-            <div class="form-group">
-                <label>Ngày bắt đầu theo hợp đồng</label>
-                <input type="date" name="start_day" class="form-control" value="{{ $contract->ngaybatdau }}">
-            </div>
-            
-            <div class="form-group">
-                <label>Ngày kết thúc theo hợp đồng</label>
-                <input type="date" name="end_day" class="form-control" value="{{ $contract->ngayketthuc }}">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Ngày bắt đầu theo hợp đồng</label>
+                    <input type="date" name="start_day" class="form-control" value="{{ $contract->ngaybatdau }}">
+                </div>
+                
+                <div class="form-group col-md-6">
+                    <label>Ngày kết thúc theo hợp đồng</label>
+                    <input type="date" name="end_day" class="form-control" value="{{ $contract->ngayketthuc }}">
+                </div>
             </div>
 
             <div class="form-group">
@@ -25,23 +27,19 @@
             </div>
 
             <div class="form-group">
-                <label>Hệ số lương</label>
-                <input type="number" name="salary" class="form-control" value="{{ $contract->hesoluong }}" step="0.01" min="0">
+                <label>Chủ hợp đồng:</label>
+                <div>{{ $contract->nhanvien->ho. ' '. $contract->nhanvien->ten}}</div>
             </div>
 
-            <div class="form-group">
-                <label>Nhân viên</label>
-                <select name="staff" class="form-control">
-                    <option value='{{ $contract->id }}'>{{ $contract->nhanvien->ho. ' '. $contract->nhanvien->ten}}</option>
-                    @foreach($staffs as $staff) 
-                        <option value='{{ $staff->id }}'>{{ $staff->ho. ' '. $staff->ten }}</option>
-                    @endforeach
-                </select>
+            <div class="form-group float-right">
+                <label>Người tạo hợp đồng:</label>
+                <div>{{ $contract->nguoitaohopdong->ho. ' '. $contract->nguoitaohopdong->ten }}</div>
             </div>
         </div>
 
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Cập nhật</button>
+            <button type='button' class="btn btn-danger" onclick="history.back();">Thoát</button>
+            <button type="submit" class="btn btn-primary float-right">Cập nhật</button>
         </div>
 
         @csrf

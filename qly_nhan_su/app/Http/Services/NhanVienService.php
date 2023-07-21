@@ -45,7 +45,7 @@ class NhanVienService {
                 'id_phongban' => $request->input('department'),
                 'id_chuyennganh' => (string) $request->input('major'),
                 'id_trinhdo' => (string) $request->input('level'),
-                'active' => $request->input('active')
+                'active' => '1'
             ]);
             $request->session()->flash('success', 'Tạo nhân viên mới thành công!');
         }

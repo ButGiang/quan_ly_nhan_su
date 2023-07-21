@@ -11,7 +11,7 @@ use \App\Http\Controllers\UploadController;
 use \App\Http\Controllers\ContractController;
 use \App\Http\Controllers\TimeKeepingController;
 use \App\Http\Controllers\RewardPunishmentController;
-
+use \App\Http\Controllers\AdvanceSalaryController;
 
 Route::get('/', [AccountController::class, 'index']);
 
@@ -79,5 +79,15 @@ Route::middleware(['auth'])->group(function() {
         Route::get('/edit/{id_thuongphat}', [RewardPunishmentController::class, 'edit']);
         Route::post('/edit/{id_thuongphat}', [RewardPunishmentController::class, 'post_edit']);
         Route::delete('/delete', [RewardPunishmentController::class, 'delete']);
+        Route::post('/search', [RewardPunishmentController::class, 'search']);
+    });
+
+    Route::prefix('advanceSalary')->group(function() {
+        Route::get('/list', [AdvanceSalaryController::class, 'index']);
+        Route::get('/add', [AdvanceSalaryController::class, 'create']);
+        Route::post('/add', [AdvanceSalaryController::class, 'post_create']);
+        Route::get('/edit/{id_ungluong}', [AdvanceSalaryController::class, 'edit']);
+        Route::post('/edit/{id_ungluong}', [AdvanceSalaryController::class, 'post_edit']);
+        Route::post('/search', [AdvanceSalaryController::class, 'search']);
     });
 });

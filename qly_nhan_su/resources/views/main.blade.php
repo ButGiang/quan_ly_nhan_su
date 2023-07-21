@@ -53,7 +53,7 @@
                                     <div class="checkbox">
                                         <label for="drop-remove">
                                             <input type="checkbox" id="drop-remove">
-                                            Xóa sau khi thả
+                                            Xóa thẻ sau khi dùng
                                         </label>                        
                                     </div>
                                 </div>
@@ -199,7 +199,7 @@
                                     <label for="todoCheck5"></label>
                                 </div>
                                 <span class="text">Hoàn thiện bài thực tập</span>
-                                <small class="badge badge-warning"><i class="far fa-clock"></i> 1 tuần</small>
+                                <small class="badge badge-success"><i class="far fa-clock"></i> 6 tuần</small>
                                 <div class="tools">
                                     <i class="fas fa-edit"></i>
                                     <i class="fas fa-trash-o"></i>
@@ -215,8 +215,25 @@
             </div>
         </div>
 
-        <div class="col-md-6" style="margin-top: 200px">
-            <h1>abc</h1>
+        <div class="col-md-6" style="margin-top: 5px">
+            <div class="card card-success">
+                <div class="card-header">
+                    <h3 class="card-title">Stacked Bar Chart</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="chart">
+                        <canvas id="stackedBarChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

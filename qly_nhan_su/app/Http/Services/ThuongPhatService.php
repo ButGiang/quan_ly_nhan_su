@@ -12,7 +12,7 @@ class ThuongPhatService {
                 'phanloai' => $request->input('phanloai'), 
                 'ngay' => $request->input('day'),
                 'noidung' => $request->input('content'),
-                'trangthai' => (int) $request->input('status'),
+                'trangthai' => '0',
                 'id' => (int) $request->input('staff')
             ]);
             $request->session()->flash('success', 'Tạo mới thành công!');
@@ -29,7 +29,6 @@ class ThuongPhatService {
         $thuongphat->ngay = $request->input('day');
         $thuongphat->noidung = (string) $request->input('content');
         $thuongphat->trangthai = (string) $request->input('status');
-        $thuongphat->id = $request->input('staff');
         $thuongphat->save();
 
         $request->session()->flash('success', 'Cập nhật thành công');
