@@ -31,7 +31,7 @@ class DepartmentController extends Controller
 
     public function post_create(Request $request) {
         $this->phongbanService->create($request);
-        return redirect()->back();
+        return redirect('/department/list');
     }
 
     public function edit($id_phongban) {

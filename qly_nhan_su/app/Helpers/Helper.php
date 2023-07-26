@@ -52,6 +52,30 @@ class Helper {
         return $html;
     }
 
+    public static function bank_list($banks) {
+        $html = '';
+        foreach($banks as $bank) {
+            $html .= '
+                <tr>
+                    <td>'. $bank->id_tknh .'</td>
+                    <td>'. $bank->nhanvien->ho. ' '. $bank->nhanvien->ten .'</td>
+                    <td>'. $bank->tennganhang .'</td>
+                    <td>'. $bank->sotaikhoan .'</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" href="/staff/bank/edit/'. $bank->id_tknh .'">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a class="btn btn-danger btn-sm" href="#"
+                        onclick="RemoveRow('. $bank->id_tknh .', \'/staff/bank/delete\')">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            ';
+        }
+        return $html;
+    }
+
     public static function major_list($majors) {
         $html = '';
         foreach($majors as $major) {
@@ -206,6 +230,112 @@ class Helper {
                     <td>
                         <a class="btn btn-primary btn-sm" href="/advanceSalary/edit/'. $advSalary->id_ungluong .'">
                             <i class="fas fa-edit"></i>
+                        </a>
+                    </td>
+                </tr>
+            ';       
+        }                   
+        return $html;
+    }
+
+    public static function Salary_formula($Salarys) {
+        $html = '';
+        foreach($Salarys as $Salary) {
+            $html .= '
+                <tr>
+                    <td>'. $Salary->id_ctl .'</td>
+                    <td>'. $Salary->ten .'</td>
+                    <td style="width: 70%">'. $Salary->congthuc .'</td>
+
+                    <td>
+                        <a class="btn btn-primary btn-sm" href="/salary/formula/edit/'. $Salary->id_ctl .'">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a class="btn btn-danger btn-sm" href="#"
+                        onclick="RemoveRow('. $Salary->id_ctl .', \'/salary/formula/delete\')">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            ';       
+        }                   
+        return $html;
+    }
+
+    public static function loailuong($loailuong = 0) {
+        if($loailuong==0) {
+            return '<span class="btn btn-info btn-xs">Lương cố định</span>';
+        }
+        else {
+            return '<span class="btn btn-primary btn-xs">Lương theo tháng</span>';
+        }
+    }
+
+    public static function Salary_category($Salarys) {
+        $html = '';
+        foreach($Salarys as $Salary) {
+            $html .= '
+                <tr>
+                    <td>'. $Salary->id_dml .'</td>
+                    <td>'. $Salary->ten .'</td>
+                    <td>'. $Salary->kyhieu .'</td>
+                    <td>'. self::loailuong($Salary->loailuong) .'</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" href="/salary/category/edit/'. $Salary->id_dml .'">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a class="btn btn-danger btn-sm" href="#"
+                        onclick="RemoveRow('. $Salary->id_dml .', \'/salary/category/delete\')">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            ';       
+        }                   
+        return $html;
+    }
+
+    public static function Salary_fixedSLR($Salarys) {
+        $html = '';
+        foreach($Salarys as $Salary) {
+            $html .= '
+                <tr>
+                    <td>'. $Salary->id_lcd .'</td>
+                    <td>'. $Salary->nhanvien->ho. ' '. $Salary->nhanvien->ten .'</td>
+                    <td>'. $Salary->danhmucluong->ten. '</td>
+                    <td>'. $Salary->sotien .'</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" href="/salary/fixed/edit/'. $Salary->id_lcd .'">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a class="btn btn-danger btn-sm" href="#"
+                        onclick="RemoveRow('. $Salary->id_lcd .', \'/salary/fixed/delete\')">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            ';       
+        }                   
+        return $html;
+    }
+
+    public static function Salary_monthlySLR($Salarys) {
+        $html = '';
+        foreach($Salarys as $Salary) {
+            $html .= '
+                <tr>
+                    <td>'. $Salary->id_ltt .'</td>
+                    <td>'. $Salary->nhanvien->ho. ' '. $Salary->nhanvien->ten .'</td>
+                    <td>'. $Salary->danhmucluong->ten. '</td>
+                    <td>'. $Salary->thang. '</td>
+                    <td>'. $Salary->sotien .'</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" href="/salary/monthly/edit/'. $Salary->id_ltt .'">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a class="btn btn-danger btn-sm" href="#"
+                        onclick="RemoveRow('. $Salary->id_ltt .', \'/salary/monthly/delete\')">
+                            <i class="fas fa-trash"></i>
                         </a>
                     </td>
                 </tr>

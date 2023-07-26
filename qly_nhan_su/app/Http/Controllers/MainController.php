@@ -9,6 +9,8 @@ use App\Http\Services\NhanVienService;
 use App\Http\Services\UploadService;
 use App\Models\nhanvien;
 use App\Models\taikhoan;
+use App\Models\ngaynghi;
+
 
 class MainController extends Controller
 {
@@ -72,5 +74,12 @@ class MainController extends Controller
             response()->json(['error' => true]);
         }
         return redirect('profile');
+    }
+
+    public function dayoff() {
+        return view('DayOff.list', [
+            'title' => 'Ngày nghỉ',
+            'dayoff' => ngaynghi::orderBy('id_ngaynghi', 'asc')->get()
+        ]);
     }
 }

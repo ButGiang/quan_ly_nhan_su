@@ -5,21 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ungluong extends Model
+class luongtheothang extends Model
 {
     use HasFactory;
 
-    protected $table = "ungluong";
-    protected $primaryKey = 'id_ungluong';
-    
+    protected $table = "luong_theothang";
+    protected $primaryKey = 'id_ltt';
+
     protected $fillable = [
-        'id_ungluong',
+        'id_ltt',
+        'thang',
         'sotien',
-        'ngay',
-        'ghichu',
-        'trangthai',
         'id',
-        'id_nguoiduyet'
+        'id_dml'
     ];
 
     public $timestamps = false;
@@ -28,7 +26,7 @@ class ungluong extends Model
         return $this->hasOne(nhanvien::class, 'id', 'id')->withDefault(['ten' => '']);
     }
 
-    public function nguoiduyet() {
-        return $this->hasOne(nhanvien::class, 'id', 'id_nguoiduyet')->withDefault(['ten' => '']);
+    public function danhmucluong() {
+        return $this->hasOne(danhmucluong::class, 'id_dml', 'id_dml')->withDefault(['ten' => '']);
     }
 }

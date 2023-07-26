@@ -33,7 +33,7 @@ class MajorController extends Controller
 
     public function post_create(Request $request) {
         $this->chuyennganhService->create($request);
-        return redirect()->back();
+        return redirect('/major/list');
     }
 
     public function edit($id_chuyennganh) {

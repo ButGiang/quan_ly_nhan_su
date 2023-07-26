@@ -42,7 +42,13 @@
                         <textarea name="content" class="form-control" style="min-height: 210px;">{{ $advSalary->ghichu }}</textarea>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <label>Người duyệt đơn:</label>
+                    <div>{{ $advSalary->nguoiduyet->ho. ' '. $advSalary->nguoiduyet->ten }}</div>
+                </div>
             </div>
+
         </div>
 
         <div class="card-footer">

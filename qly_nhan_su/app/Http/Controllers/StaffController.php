@@ -13,6 +13,7 @@ use App\Models\nhanvien;
 use App\Models\phongban;
 use App\Models\chuyennganh;
 use App\Models\trinhdo;
+use App\Models\taikhoannganhang;
 
 class StaffController extends Controller
 {
@@ -52,7 +53,7 @@ class StaffController extends Controller
     public function post_create(StaffFormRequest $request) {
         $this->nhanvienService->create($request);
 
-        return redirect()->back()->withInput();
+        return redirect('/staff/list');
     }
 
     public function edit(nhanvien $id) {
@@ -203,5 +204,72 @@ class StaffController extends Controller
             'majors' => $majors,
             'levels' => $levels
         ]);
+    }
+
+    public function bank_list() {
+        return view('Staff.Bank.bank_list', [
+            'title' => 'Danh sách tài khoản ngân hàng',
+            'banks' => taikhoannganhang::orderBy('id_tknh', 'asc')->get()
+        ]);
+    }
+
+    public function bank_add() {
+        $staffs = nhanvien::whereNotIn('id', taikhoannganhang::select('id'))->get();
+        
+        return view('Staff.Bank.bank_add', [
+            'title' => 'Thêm mới TKNH',
+            'staffs' => $staffs
+        ]);
+    }
+
+    public function post_bank_add(Request $request) {
+        $this->nhanvienService->bank_create($request);
+
+        return redirect('/staff/bank');
+    }
+
+    public function bank_edit(taikhoannganhang $id_tknh) {
+        return view('Staff.Bank.bank_edit', [
+            'title' => 'Chỉnh sủa TKNH',
+            'bank' => $id_tknh
+        ]);
+    }
+
+    public function post_bank_edit(Request $request, taikhoannganhang $id_tknh) {
+        $this->nhanvienService->bank_update($request, $id_tknh);
+
+        return redirect('/staff/bank');
+    }
+
+    public function bank_delete(Request $request) {
+        $result = $this->nhanvienService->bank_delete($request);
+
+        if($result) {
+            return response()->json([
+                'error' => false,
+                'message' => 'Xóa thành công!'
+            ]);
+            return location.reload();
+        }
+        return response()->json([
+            'error' => true
+        ]);
+    }
+
+    public function bank_search(Request $request) {
+        $name = $request->input('search_name');
+        
+        if($name) {
+            $id = nhanvien::select('id')->where('ho', 'like', '%'. $name. '%')->orWhere('ten', 'like', '%'. $name. '%')->get();
+            $result = taikhoannganhang::whereIn('id', $id)->get();
+        }
+        else {
+            $result = taikhoannganhang::where('id_tknh', -1)->get();
+        }
+
+        return view('Staff.Bank.bank_list', [
+            'title' => 'Danh sách tài khoản ngân hàng',
+            'banks' => $result
+        ]); 
     }
 }

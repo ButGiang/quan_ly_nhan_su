@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+
 use App\Http\Services\ThuongPhatService;
 use App\Models\thuong_phat;
 use App\Models\nhanvien;

@@ -30,11 +30,11 @@ class AdvanceSalaryController extends Controller
         if($name) {
             if($status) {
                 $id = nhanvien::select('id')->where('ho', 'like', '%'. $name. '%')->orWhere('ten', 'like', '%'. $name. '%')->get();
-                $result = ungluong::where('id', $id->value('id'))->where('trangthai', $status)->get();
+                $result = ungluong::whereIn('id', $id)->where('trangthai', $status)->get();
             }
             else {
                 $id = nhanvien::select('id')->where('ho', 'like', '%'. $name. '%')->orWhere('ten', 'like', '%'. $name. '%')->get();
-                $result = ungluong::where('id', $id->value('id'))->get();
+                $result = ungluong::whereIn('id', $id)->get();
             }
         }
         elseif(!is_null($status)) {
@@ -63,7 +63,7 @@ class AdvanceSalaryController extends Controller
     public function post_create(Request $request) {
         $this->ungluongService->create($request);
 
-        return redirect()->back()->withInput();
+        return redirect('/advanceSalary/list');
     }
 
     public function edit(ungluong $id_ungluong) {

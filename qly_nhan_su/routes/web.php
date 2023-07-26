@@ -12,6 +12,8 @@ use \App\Http\Controllers\ContractController;
 use \App\Http\Controllers\TimeKeepingController;
 use \App\Http\Controllers\RewardPunishmentController;
 use \App\Http\Controllers\AdvanceSalaryController;
+use \App\Http\Controllers\SalaryController;
+
 
 Route::get('/', [AccountController::class, 'index']);
 
@@ -40,6 +42,15 @@ Route::middleware(['auth'])->group(function() {
         Route::post('/edit/{id}', [StaffController::class, 'post_edit']);
         Route::delete('/delete', [StaffController::class, 'delete']);
         Route::post('/search', [StaffController::class, 'search']);
+        Route::prefix('bank')->group(function() {
+            Route::get('/', [StaffController::class, 'bank_list']);
+            Route::get('/add', [StaffController::class, 'bank_add']);
+            Route::post('/add', [StaffController::class, 'post_bank_add']);
+            Route::get('/edit/{id_tknh}', [StaffController::class, 'bank_edit']);
+            Route::post('/edit/{id_tknh}', [StaffController::class, 'post_bank_edit']);
+            Route::delete('/delete', [StaffController::class, 'bank_delete']);
+            Route::post('/search', [StaffController::class, 'bank_search']);
+        });
     });
     
     Route::prefix('department')->group(function() {
@@ -90,4 +101,47 @@ Route::middleware(['auth'])->group(function() {
         Route::post('/edit/{id_ungluong}', [AdvanceSalaryController::class, 'post_edit']);
         Route::post('/search', [AdvanceSalaryController::class, 'search']);
     });
+
+    Route::prefix('salary')->group(function() {
+        Route::prefix('formula')->group(function() {
+            Route::get('/', [SalaryController::class, 'formula']);
+            Route::get('/add', [SalaryController::class, 'formula_add']);
+            Route::post('/add', [SalaryController::class, 'post_formula_add']);
+            Route::get('/edit/{id_ctl}', [SalaryController::class, 'formula_edit']);
+            Route::post('/edit/{id_ctl}', [SalaryController::class, 'post_formula_edit']);
+            Route::delete('/delete', [SalaryController::class, 'formula_delete']);
+        });
+
+        Route::prefix('category')->group(function() {
+            Route::get('/', [SalaryController::class, 'category']);
+            Route::get('/add', [SalaryController::class, 'category_add']);
+            Route::post('/add', [SalaryController::class, 'post_category_add']);
+            Route::get('/edit/{id_dml}', [SalaryController::class, 'category_edit']);
+            Route::post('/edit/{id_dml}', [SalaryController::class, 'post_category_edit']);
+            Route::delete('/delete', [SalaryController::class, 'category_delete']);
+        });
+
+        Route::prefix('fixed')->group(function() {
+            Route::get('/', [SalaryController::class, 'fixedSlr']);
+            Route::get('/select', [SalaryController::class, 'fixedSlr_select']);
+            Route::post('/select', [SalaryController::class, 'post_fixedSlr_select']);
+            Route::post('/add', [SalaryController::class, 'post_fixedSlr_add']);
+            Route::get('/edit/{id_lcd}', [SalaryController::class, 'fixedSlr_edit']);
+            Route::post('/edit/{id_lcd}', [SalaryController::class, 'post_fixedSlr_edit']);
+            Route::delete('/delete', [SalaryController::class, 'fixedSlr_delete']);
+        });
+
+        Route::prefix('monthly')->group(function() {
+            Route::get('/', [SalaryController::class, 'monthlySlr']);
+            Route::get('/select', [SalaryController::class, 'monthlySlr_select']);
+            Route::post('/select', [SalaryController::class, 'post_monthlySlr_select']);
+            Route::post('/add', [SalaryController::class, 'post_monthlySlr_add']);
+            Route::get('/edit/{id_ltt}', [SalaryController::class, 'monthlySlr_edit']);
+            Route::post('/edit/{id_ltt}', [SalaryController::class, 'post_monthlySlr_edit']);
+            Route::delete('/delete', [SalaryController::class, 'monthlySlr_delete']);
+        });
+
+    });
+
+    Route::get('dayoff', [MainController::class, 'dayoff']);
 });

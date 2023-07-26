@@ -8,6 +8,7 @@ use App\Models\nhanvien;
 use App\Models\phongban;
 use App\Models\chuyennganh;
 use App\Models\trinhdo;
+use App\Models\taikhoannganhang;
 
 class NhanVienService {
     // gọi vào func staff trong Model Staff
@@ -93,6 +94,40 @@ class NhanVienService {
         $nhanvien = nhanvien::where('id', (int) $request->input('id'))->first();
         if($nhanvien) {
             $nhanvien->delete();
+            return true;
+        }
+        return false;
+    }
+
+    public function bank_create($request) {
+        try {
+            taikhoannganhang::create([
+                'tennganhang' => (string) $request->input('bank_name'),
+                'sotaikhoan' => (int) $request->input('stk'),
+                'id' => (int) $request->input('staff'),
+            ]);
+            $request->session()->flash('success', 'Tạo mới thành công!');
+        }
+        catch(exception $e) {
+            $request->session()->flash('error', $e->getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    public function bank_update($request, $id_tknh): bool {
+        $id_tknh->tennganhang = (string) $request->input('bank_name');
+        $id_tknh->sotaikhoan = (int) $request->input('stk');
+        $id_tknh->save();
+
+        $request->session()->flash('success', 'Cập nhật thành công');
+        return true;
+    }
+
+    public function bank_delete($request) {
+        $TKNH = taikhoannganhang::where('id_tknh', (int) $request->input('id'))->first();
+        if($TKNH) {
+            $TKNH->delete();
             return true;
         }
         return false;

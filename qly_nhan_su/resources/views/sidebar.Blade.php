@@ -76,6 +76,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="/staff/bank" class="nav-link mini-menu">
+                            <i class="fas fa-university nav-icon"></i>
+                            <p>Tài khoản ngân hàng</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="/staff/add" class="nav-link mini-menu">
                             <i class="fas fa-user-plus nav-icon"></i>
                             <p>Thêm mới nhân viên</p>
@@ -200,13 +206,13 @@
 
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/salary/default" class="nav-link mini-menu">
+                            <a href="/salary/fixed" class="nav-link mini-menu">
                                 <i class="fas fa-money-bill-wave-alt nav-icon"></i><i class="fas "></i>
                                 <p>Lương cố định</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/salary/bonus" class="nav-link mini-menu">
+                            <a href="/salary/monthly" class="nav-link mini-menu">
                                 <i class="fas fa-money-bill-wave nav-icon"></i>
                                 <p>Lương theo tháng</p>
                             </a>
@@ -256,6 +262,16 @@
                             </a>
                         </li>
                     </ul>
+                </li>
+
+                {{-- Day off --}}
+                <li class="nav-item">
+                    <a href="/dayoff" class="nav-link">
+                        <i class="nav-icon fas fa-umbrella-beach" aria-hidden="true"></i> 
+                        <p>
+                            Quản lý ngày nghỉ   
+                        </p>
+                    </a>
                 </li>
 
                 {{-- Account --}}

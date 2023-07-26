@@ -46,7 +46,7 @@ class HopDongService {
     }
 
     public function delete($request) {
-        $hopdong = hopdong::where('id_hopdong', (int) $request->input('staff'))->first();
+        $hopdong = hopdong::where('id_hopdong', (int) $request->input('id'))->first();
         if($hopdong) {
             $hopdong->delete();
             return true;

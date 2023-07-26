@@ -63,7 +63,7 @@ class ContractController extends Controller
     public function post_create(Request $request) {
         $this->hopdongService->create($request);
 
-        return redirect()->back()->withInput();
+        return redirect('/contract/list');
     }
 
     public function edit(hopdong $id_hopdong) {
