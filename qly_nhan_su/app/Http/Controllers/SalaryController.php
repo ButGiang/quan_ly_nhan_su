@@ -9,6 +9,7 @@ use App\Models\congthucluong;
 use App\Models\danhmucluong;
 use App\Models\luongcodinh;
 use App\Models\luongtheothang;
+use App\Models\bangluong;
 use App\Models\nhanvien;
 
 
@@ -241,5 +242,24 @@ class SalaryController extends Controller
         return response()->json([
             'error' => true
         ]);
+    }
+
+
+
+    // bảng lương
+    public function list() {
+        $salarys = bangluong::orderBy('id_bangluong', 'asc')->get();
+        $sum_ungluong = 0;
+        foreach($salarys as $salary) {
+            $ungluong = congthucluong::where('id', $salary->id)->get();
+            $sum_ungluong = $sum_ungluong + $ungluong;
+        }
+
+        // return view('Salary.list', [
+        //     'title' => 'Bảng lương',
+        //     'salarys' => $salarys,
+        //     'ungluong' => $sum_ungluong 
+        // ]);
+        dd($sum_ungluong);
     }
 }

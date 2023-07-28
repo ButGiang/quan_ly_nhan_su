@@ -13,11 +13,10 @@ return new class extends Migration
     {
         Schema::create('hopdong', function (Blueprint $table) {
             $table->increments('id_hopdong');
+            $table->date('ngayki');
             $table->date('ngaybatdau');
             $table->date('ngayketthuc');
-            $table->date('ngayki');
             $table->string('noidung', 255);
-            $table->float('hesoluong');
         });
 
         Schema::table('hopdong', function ($table) {

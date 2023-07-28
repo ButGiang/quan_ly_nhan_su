@@ -141,6 +141,12 @@ Route::middleware(['auth'])->group(function() {
             Route::delete('/delete', [SalaryController::class, 'monthlySlr_delete']);
         });
 
+        Route::prefix('list')->group(function() {
+            Route::get('/', [SalaryController::class, 'list']);
+            Route::get('/add', [SalaryController::class, 'add']);
+            Route::post('/add', [SalaryController::class, 'post_add']);
+            Route::post('/search', [SalaryController::class, 'search']);
+        });
     });
 
     Route::get('dayoff', [MainController::class, 'dayoff']);

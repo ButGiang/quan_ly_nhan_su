@@ -15,8 +15,9 @@ return new class extends Migration
             $table->increments('id');
             $table->string('ho', 255);
             $table->string('ten', 100);
+            $table->integer('gioitinh')->length(1);
             $table->date('ngaysinh');
-            $table->integer('CCCD');
+            $table->integer('CCCD')->unique();
             $table->string('email', 100)->unique();
             $table->string('diachi', 255);
             $table->integer('sdt')->length(11);

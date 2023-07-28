@@ -16,8 +16,10 @@ return new class extends Migration
             $table->integer('nam')->length(4);
             $table->integer('thang')->length(2);
             $table->integer('ngay')->length(2);
-            $table->string('noidung', 255);
-            $table->float('hesoluong');
+            $table->integer('giovao')->length(2);
+            $table->integer('phutvao')->length(2);
+            $table->integer('giora')->length(2);
+            $table->integer('phutra')->length(2);
         });
 
         Schema::table('chamcong', function ($table) {

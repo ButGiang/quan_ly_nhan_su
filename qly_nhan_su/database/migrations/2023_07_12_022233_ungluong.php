@@ -15,7 +15,14 @@ return new class extends Migration
             $table->increments('id_ungluong');
             $table->integer('sotien');
             $table->date('ngay');
+            $table->string('ghichu', 255);
             $table->integer('trangthai')->length(1);
+        });
+
+        Schema::table('ungluong', function ($table) {
+            $table->integer('id_nguoiduyet')->unsigned();
+        
+            $table->foreign('id_nguoiduyet')->references('id')->on('nhanvien');    
         });
 
         Schema::table('ungluong', function ($table) {

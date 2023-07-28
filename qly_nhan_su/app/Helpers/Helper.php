@@ -343,4 +343,26 @@ class Helper {
         }                   
         return $html;
     }
+
+    public static function salary_list($Salarys) {
+        $html = '';
+        foreach($Salarys as $Salary) {
+            $html .= '
+                <tr>
+                    <td>'. $Salary->id_bangluong .'</td>
+                    <td>'. $Salary->nhanvien->ho. ' '. $Salary->nhanvien->ten .'</td>
+                    <td>'. $Salary->thang. '</td>
+                    <td>'. $Salary->tongluong .'</td>
+                    <td>'. $Salary->ungluong->sotien. '</td>
+                    <td>'. $Salary->luong .'</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" href="/salary/look/'. $Salary->id_bangluong .'">
+                            <i class="fas fa-eye"></i>
+                        </a>
+                    </td>
+                </tr>
+            ';       
+        }                   
+        return $html;
+    }
 }

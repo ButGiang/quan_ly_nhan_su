@@ -36,7 +36,7 @@
                             <div class="card card-primary mt-3">
                                 <div class="card-header">
                                     <h3 class="card-title"> {{ $title }} </small></h3>
-                                    <button class="btn-success float-right" style='border: 1px solid white; border-radius: 5px;' onclick="location.reload();"> 
+                                    <button class="btn-sm btn-success float-right" style='border: 1px solid white; border-radius: 5px;' onclick="location.reload();"> 
                                         <i class="fas fa-sync-alt"></i>
                                     </button>
                                 </div>

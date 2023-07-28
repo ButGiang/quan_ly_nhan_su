@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('thuong_phat', function (Blueprint $table) {
             $table->increments('id_thuongphat');
             $table->integer('phanloai')->length(1);
+            $table->date('ngay');
             $table->string('noidung', 255);
             $table->integer('trangthai')->length(1);
         });
