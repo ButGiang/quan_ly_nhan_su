@@ -18,9 +18,10 @@ class ChuyenNganhService {
     public function create($request) {
         try {
             chuyennganh::create([
-                'ten' => (string) $request->input('name'), 
+                'ten' => (string) $request->input('name'),
+                'mota' => (string) $request->input('describe'),
             ]);
-            $request->session()->flash('success', 'Tạo Chuyên ngành mới thành công!');
+            $request->session()->flash('success', 'Tạo Chức vụ mới thành công!');
         }
         catch(exception $e) {
             $request->session()->flash('error', $e->getMessage());
@@ -31,6 +32,7 @@ class ChuyenNganhService {
 
     public function update($request, $major): bool {
         $major->ten = (string) $request->input('name');
+        $major->mota = (string) $request->input('describe');
         $major->save();
 
         $request->session()->flash('success', 'Cập nhật thành công');

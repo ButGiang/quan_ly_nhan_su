@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    <form action="/staff/bank/search" method="POST">
+    <form action="/staff/insurance/search" method="POST">
         @csrf
         <div class="row" style="margin: 5px 0 0 15px">
             <div class="col-md-3">
@@ -23,7 +23,7 @@
             <div class="col-md-4"></div>
 
             <div class="col-md-1">
-                <a href="bank/add" class="form-group btn btn-primary add-btn">
+                <a href="insurance/add" class="form-group btn btn-primary add-btn">
                     <i class="fas fa-plus-circle" style="color: white"> Thêm mới</i>
                 </a>
             </div>
@@ -35,14 +35,16 @@
             <tr>
                 <th>Id</th>
                 <th>Họ & Tên</th>
-                <th>Tên ngân hàng</th>
-                <th>Số tài khoản</th>
+                <th>Mã bảo hiểm</th>
+                <th>Nơi đăng ký</th>
+                <th>Ngày đăng ký</th>
+                <th>Nơi khám bệnh</th>
                 <th></th>
             </tr>
         </thead>
 
         <tbody>
-            {!! \App\Helpers\Helper::bank_list($banks) !!}
+            {!! \App\Helpers\Helper::insurance_list($insurances) !!}
         </tbody>
     </table>
 @endsection

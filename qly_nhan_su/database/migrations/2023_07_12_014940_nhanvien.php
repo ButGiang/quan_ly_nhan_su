@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('email', 100)->unique();
             $table->string('diachi', 255);
             $table->integer('sdt')->length(11);
+            $table->string('avatar', 255);
+            $table->date('ngaytuyendung');
             $table->integer('active')->length(1);
             $table->timestamps();
         });

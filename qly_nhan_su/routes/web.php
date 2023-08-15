@@ -7,12 +7,6 @@ use \App\Http\Controllers\MainController;
 use \App\Http\Controllers\StaffController;
 use \App\Http\Controllers\MajorController;
 use \App\Http\Controllers\DepartmentController;
-use \App\Http\Controllers\UploadController;
-use \App\Http\Controllers\ContractController;
-use \App\Http\Controllers\TimeKeepingController;
-use \App\Http\Controllers\RewardPunishmentController;
-use \App\Http\Controllers\AdvanceSalaryController;
-use \App\Http\Controllers\SalaryController;
 
 
 Route::get('/', [AccountController::class, 'index']);
@@ -32,7 +26,6 @@ Route::middleware(['auth'])->group(function() {
     Route::get('main', [MainController::class, 'index']);
         
     Route::get('profile', [MainController::class, 'profile']);
-    Route::post('profile', [MainController::class, 'post_profile']);
 
     Route::prefix('staff')->group(function() {
         Route::get('/list', [StaffController::class, 'index']);
@@ -42,6 +35,7 @@ Route::middleware(['auth'])->group(function() {
         Route::post('/edit/{id}', [StaffController::class, 'post_edit']);
         Route::delete('/delete', [StaffController::class, 'delete']);
         Route::post('/search', [StaffController::class, 'search']);
+
         Route::prefix('bank')->group(function() {
             Route::get('/', [StaffController::class, 'bank_list']);
             Route::get('/add', [StaffController::class, 'bank_add']);
@@ -50,6 +44,36 @@ Route::middleware(['auth'])->group(function() {
             Route::post('/edit/{id_tknh}', [StaffController::class, 'post_bank_edit']);
             Route::delete('/delete', [StaffController::class, 'bank_delete']);
             Route::post('/search', [StaffController::class, 'bank_search']);
+        });
+
+        Route::prefix('insurance')->group(function() {
+            Route::get('/', [StaffController::class, 'insurance_list']);
+            Route::get('/add', [StaffController::class, 'insurance_add']);
+            Route::post('/add', [StaffController::class, 'post_insurance_add']);
+            Route::get('/edit/{id}', [StaffController::class, 'insurance_edit']);
+            Route::post('/edit/{id}', [StaffController::class, 'post_insurance_edit']);
+            Route::delete('/delete', [StaffController::class, 'insurance_delete']);
+            Route::post('/search', [StaffController::class, 'insurance_search']);
+        });
+
+        Route::prefix('grown_process')->group(function() {
+            Route::get('/', [StaffController::class, 'grown_process_list']);
+            Route::get('/add', [StaffController::class, 'grown_process_add']);
+            Route::post('/add', [StaffController::class, 'post_grown_process_add']);
+            Route::get('/edit/{id}', [StaffController::class, 'grown_process_edit']);
+            Route::post('/edit/{id}', [StaffController::class, 'post_grown_process_edit']);
+            Route::delete('/delete', [StaffController::class, 'grown_process_delete']);
+            Route::post('/search', [StaffController::class, 'grown_process_search']);
+        });
+
+        Route::prefix('achievement')->group(function() {
+            Route::get('/', [StaffController::class, 'achievement_list']);
+            Route::get('/add', [StaffController::class, 'achievement_add']);
+            Route::post('/add', [StaffController::class, 'post_achievement_add']);
+            Route::get('/edit/{id}', [StaffController::class, 'achievement_edit']);
+            Route::post('/edit/{id}', [StaffController::class, 'post_achievement_edit']);
+            Route::delete('/delete', [StaffController::class, 'achievement_delete']);
+            Route::post('/search', [StaffController::class, 'achievement_search']);
         });
     });
     
@@ -71,83 +95,4 @@ Route::middleware(['auth'])->group(function() {
         Route::delete('/delete', [MajorController::class, 'delete']);
     });
 
-    Route::prefix('contract')->group(function() {
-        Route::get('/list', [ContractController::class, 'index']);
-        Route::get('/add', [ContractController::class, 'create']);
-        Route::post('/add', [ContractController::class, 'post_create']);
-        Route::get('/edit/{id_hopdong}', [ContractController::class, 'edit']);
-        Route::post('/edit/{id_hopdong}', [ContractController::class, 'post_edit']);
-        Route::delete('/delete', [ContractController::class, 'delete']);
-        Route::post('/search', [ContractController::class, 'search']);
-    });
-
-    Route::get('timekeeping', [TimeKeepingController::class, 'index']);
-
-    Route::prefix('extra')->group(function() {
-        Route::get('/reward&punishment', [RewardPunishmentController::class, 'index']);
-        Route::get('/add', [RewardPunishmentController::class, 'create']);
-        Route::post('/add', [RewardPunishmentController::class, 'post_create']);
-        Route::get('/edit/{id_thuongphat}', [RewardPunishmentController::class, 'edit']);
-        Route::post('/edit/{id_thuongphat}', [RewardPunishmentController::class, 'post_edit']);
-        Route::delete('/delete', [RewardPunishmentController::class, 'delete']);
-        Route::post('/search', [RewardPunishmentController::class, 'search']);
-    });
-
-    Route::prefix('advanceSalary')->group(function() {
-        Route::get('/list', [AdvanceSalaryController::class, 'index']);
-        Route::get('/add', [AdvanceSalaryController::class, 'create']);
-        Route::post('/add', [AdvanceSalaryController::class, 'post_create']);
-        Route::get('/edit/{id_ungluong}', [AdvanceSalaryController::class, 'edit']);
-        Route::post('/edit/{id_ungluong}', [AdvanceSalaryController::class, 'post_edit']);
-        Route::post('/search', [AdvanceSalaryController::class, 'search']);
-    });
-
-    Route::prefix('salary')->group(function() {
-        Route::prefix('formula')->group(function() {
-            Route::get('/', [SalaryController::class, 'formula']);
-            Route::get('/add', [SalaryController::class, 'formula_add']);
-            Route::post('/add', [SalaryController::class, 'post_formula_add']);
-            Route::get('/edit/{id_ctl}', [SalaryController::class, 'formula_edit']);
-            Route::post('/edit/{id_ctl}', [SalaryController::class, 'post_formula_edit']);
-            Route::delete('/delete', [SalaryController::class, 'formula_delete']);
-        });
-
-        Route::prefix('category')->group(function() {
-            Route::get('/', [SalaryController::class, 'category']);
-            Route::get('/add', [SalaryController::class, 'category_add']);
-            Route::post('/add', [SalaryController::class, 'post_category_add']);
-            Route::get('/edit/{id_dml}', [SalaryController::class, 'category_edit']);
-            Route::post('/edit/{id_dml}', [SalaryController::class, 'post_category_edit']);
-            Route::delete('/delete', [SalaryController::class, 'category_delete']);
-        });
-
-        Route::prefix('fixed')->group(function() {
-            Route::get('/', [SalaryController::class, 'fixedSlr']);
-            Route::get('/select', [SalaryController::class, 'fixedSlr_select']);
-            Route::post('/select', [SalaryController::class, 'post_fixedSlr_select']);
-            Route::post('/add', [SalaryController::class, 'post_fixedSlr_add']);
-            Route::get('/edit/{id_lcd}', [SalaryController::class, 'fixedSlr_edit']);
-            Route::post('/edit/{id_lcd}', [SalaryController::class, 'post_fixedSlr_edit']);
-            Route::delete('/delete', [SalaryController::class, 'fixedSlr_delete']);
-        });
-
-        Route::prefix('monthly')->group(function() {
-            Route::get('/', [SalaryController::class, 'monthlySlr']);
-            Route::get('/select', [SalaryController::class, 'monthlySlr_select']);
-            Route::post('/select', [SalaryController::class, 'post_monthlySlr_select']);
-            Route::post('/add', [SalaryController::class, 'post_monthlySlr_add']);
-            Route::get('/edit/{id_ltt}', [SalaryController::class, 'monthlySlr_edit']);
-            Route::post('/edit/{id_ltt}', [SalaryController::class, 'post_monthlySlr_edit']);
-            Route::delete('/delete', [SalaryController::class, 'monthlySlr_delete']);
-        });
-
-        Route::prefix('list')->group(function() {
-            Route::get('/', [SalaryController::class, 'list']);
-            Route::get('/add', [SalaryController::class, 'add']);
-            Route::post('/add', [SalaryController::class, 'post_add']);
-            Route::post('/search', [SalaryController::class, 'search']);
-        });
-    });
-
-    Route::get('dayoff', [MainController::class, 'dayoff']);
 });

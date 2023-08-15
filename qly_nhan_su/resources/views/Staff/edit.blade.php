@@ -7,12 +7,12 @@
             <div class="row">
                 <div class="form-group col-md-6">
                     <label>Họ và tên đệm</label>
-                    <input type="text" name="first_name" class="form-control"  value="{{ $staff->ho }}" placeholder="Enter surname">
+                    <input type="text" name="first_name" class="form-control"  value="{{ $staff->ho }}">
                 </div>
     
                 <div class="form-group col-md-6">
                     <label>Tên</label>
-                    <input type="text" name="last_name" class="form-control" value="{{ $staff->ten }}" placeholder="Enter name">
+                    <input type="text" name="last_name" class="form-control" value="{{ $staff->ten }}">
                 </div>
             </div>
 
@@ -39,23 +39,41 @@
             <div class="row">
                 <div class="form-group col-md-4">
                     <label>Căn cước công dân</label>
-                    <input type="text" name="CCCD" class="form-control" value="{{ $staff->CCCD }}" placeholder="Enter CCCD">
+                    <input type="text" name="CCCD" class="form-control" value="{{ $staff->CCCD }}">
                 </div>
     
                 <div class="form-group col-md-4">
                     <label>email</label>
-                    <input type="email" name="email" class="form-control" value="{{ $staff->email }}" placeholder="Enter email">
+                    <input type="email" name="email" class="form-control" value="{{ $staff->email }}">
                 </div>
 
                 <div class="form-group col-md-4">
                     <label>Số điện thoại</label>
-                    <input type="text" name="phone" class="form-control" value="{{ $staff->sdt }}" placeholder="Enter phone number">
+                    <input type="text" name="phone" class="form-control" value="{{ $staff->sdt }}">
                 </div>
             </div>
 
             <div class="form-group">
                 <label>Địa chỉ</label>
-                <input type="text" name="address" class="form-control" value="{{ $staff->diachi }}" placeholder="Enter address">
+                <input type="text" name="address" class="form-control" value="{{ $staff->diachi }}">
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Avatar</label>
+                    <input type="file" class="form-control" id="upload" name='avatar'>
+                    <div id="image_show">
+                        <a href="{{ $staff->avatar }}">
+                            <img src="{{ $staff->avatar }}" width="100px" height="120px" style="margin-top: 5px">
+                        </a>
+                    </div>
+                    <input type="hidden" name="avatar" id="file" value="{{ $staff->avatar }}">
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label>Ngày tuyển dụng</label>
+                    <input type="date" name="recruit_day" class="form-control" value="{{ $staff->ngaytuyendung }}">
+                </div>
             </div>
 
             <div class="row">

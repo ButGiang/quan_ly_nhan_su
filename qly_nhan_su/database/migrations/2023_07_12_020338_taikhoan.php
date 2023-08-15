@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('email', 100)->unique();
             $table->string('matkhau', 100);
             $table->string('role', 100);
-            $table->string('avatar', 255);
             $table->string('user_token', 50);
         });
 

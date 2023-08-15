@@ -19,6 +19,7 @@ class PhongBanService {
         try {
             phongban::create([
                 'ten' => (string) $request->input('name'), 
+                'mota' => (string) $request->input('describe')
             ]);
             $request->session()->flash('success', 'Tạo Phòng Ban mới thành công!');
         }
@@ -31,6 +32,7 @@ class PhongBanService {
 
     public function update($request, $department): bool {
         $department->ten = (string) $request->input('name');
+        $department->mota = (string) $request->input('describe');
         $department->save();
 
         $request->session()->flash('success', 'Cập nhật thành công');

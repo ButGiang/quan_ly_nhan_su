@@ -9,12 +9,13 @@ class chuyennganh extends Model
 {
     use HasFactory;
 
-    protected $table = "chuyennganh";
+    protected $table = "chucvu";
     protected $primaryKey = 'id_chuyennganh';
 
     protected $fillable = [
         'id_chuyennganh',
-        'ten'
+        'ten',
+        'mota'
     ];
 
     public $timestamps = false;

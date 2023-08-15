@@ -8,6 +8,11 @@
                 <label>Tên phòng ban</label>
                 <input type="text" name="name" class="form-control"  value="{{ $department->ten }}" placeholder="Enter name">
             </div>
+
+            <div class="form-group">
+                <label>Mô tả</label>
+                <textarea name="describe" class="form-control" >{{ $department->mota }}</textarea>
+            </div>
         </div>
 
         <div class="card-footer">

@@ -8,6 +8,11 @@
                 <label>Tên phòng ban</label>
                 <input type="text" name="name" class="form-control" placeholder="Enter department's name">
             </div> 
+
+            <div class="form-group">
+                <label>Mô tả</label>
+                <textarea name="describe" class="form-control" ></textarea>
+            </div>
         </div>
         <!-- /.card-body -->
 

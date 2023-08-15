@@ -45,41 +45,11 @@ class MainController extends Controller
 
     public function profile() {
         $id = Auth::user()->id;
-        $nhanvien = $this->nhanvienService->getNhanVien($id); 
+        $taikhoan = taikhoan::where('id', $id)->get(); 
         return view('Account.profile', [
             'title' => 'Profile',
-            'nhanvien' => $nhanvien
+            'taikhoan' => $taikhoan
         ]);
     }
 
-    public function post_profile(Request $request) {
-        $id = Auth::user()->id;
-        $nhanvien = $this->nhanvienService->getNhanVien($id);     
-        $id_taikhoan = Auth::user()->id_taikhoan;
-        $taikhoan = taikhoan::where('id_taikhoan', $id_taikhoan)->first();
-
-        $this->nhanvienService->edit_profile($request, $nhanvien);
-
-        $url = $this->uploadService->upload($request);
-
-        if($url) {
-            response()->json([
-                'error' => false,
-                'url' => $url
-            ]);                       
-            $taikhoan->avatar = $url;
-            $taikhoan->save();
-        }
-        else {
-            response()->json(['error' => true]);
-        }
-        return redirect('profile');
-    }
-
-    public function dayoff() {
-        return view('DayOff.list', [
-            'title' => 'Ngày nghỉ',
-            'dayoff' => ngaynghi::orderBy('id_ngaynghi', 'asc')->get()
-        ]);
-    }
 }

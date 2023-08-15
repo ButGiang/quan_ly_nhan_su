@@ -63,10 +63,10 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Avatar</th>
                 <th>Họ & Tên</th>
                 <th>Giới tính</th>
                 <th>Email</th>
-                <th>Số điện thoại</th>
                 <th>Phòng ban</th>
                 <th>Nghiệp vụ</th>
                 <th>Trình độ</th>

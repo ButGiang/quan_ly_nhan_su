@@ -14,7 +14,8 @@ class phongban extends Model
 
     protected $fillable = [
         'id_phongban',
-        'ten'
+        'ten',
+        'mota'
     ];
 
     public $timestamps = false;

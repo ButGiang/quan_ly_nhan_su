@@ -6,10 +6,9 @@
 
     <?php 
     use App\Models\nhanvien;
-    use App\Models\taikhoan;
         $id = Auth::user()->id;
         $name = nhanvien::where('id', $id)->value('ten');
-        $avatar = 'http://127.0.0.1:8000/'. taikhoan::where('id', $id)->value('avatar');
+        $avatar = 'http://127.0.0.1:8000/'. nhanvien::where('id', $id)->value('avatar');
         $email = Auth::user()->email;
         $token = Auth::user()->user_token;
     ?>
@@ -48,16 +47,6 @@
                     </a>
                 </li>
 
-                {{-- Time Keeping --}}
-                <li class="nav-item">
-                    <a href="/timekeeping" class="nav-link">
-                        <i class="nav-icon fas fa-calendar-alt" aria-hidden="true"></i>
-                        <p>
-                            Chấm công
-                        </p>
-                    </a>
-                </li>
-
                 {{-- Staff --}}
                 <li class="nav-item">
                     <a href="#" class="nav-link">
@@ -71,14 +60,32 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="/staff/list" class="nav-link mini-menu">
-                            <i class="fas fa-list-ul nav-icon"></i>
-                            <p>Danh sách nhân viên</p>
+                                <i class="fas fa-list-ul nav-icon"></i>
+                                <p>Danh sách nhân viên</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="/staff/bank" class="nav-link mini-menu">
-                            <i class="fas fa-university nav-icon"></i>
-                            <p>Tài khoản ngân hàng</p>
+                                <i class="fas fa-university nav-icon"></i>
+                                <p>Tài khoản ngân hàng</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/staff/insurance" class="nav-link mini-menu">
+                                <i class="fas fa-hospital nav-icon"></i>
+                                <p>Bảo hiểm</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/staff/grown_process" class="nav-link mini-menu">
+                                <i class="fas fa-level-up-alt nav-icon"></i>
+                                <p>Quá trình phát triển</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/staff/achievement" class="nav-link mini-menu">
+                                <i class="fas fa-star nav-icon"></i>
+                                <p>Thành tựu</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -140,138 +147,6 @@
                             </a>
                         </li>
                     </ul>
-                </li>
-
-                {{-- Contract --}}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-file-contract" aria-hidden="true"></i>
-                        <p>
-                            Hợp đồng lao động
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/contract/list" class="nav-link mini-menu">
-                            <i class="fas fa-file-signature nav-icon"></i>
-                            <p>Hợp đồng đã tạo</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/contract/add" class="nav-link mini-menu">
-                            <i class="fas fa-plus nav-icon"></i>
-                            <p>Tạo hợp đồng mới</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                {{-- reward and punishment --}}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-expand-alt" aria-hidden="true"></i>
-                        <p>
-                            Khen thưởng và kỷ luật
-                            <i class="right fas fa-angle-left"></i> 
-                        </p>
-                    </a>
-
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/extra/reward&punishment" class="nav-link mini-menu">
-                            <i class="fas fa-award nav-icon"></i>
-                            <p>Danh sách</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/extra/add" class="nav-link mini-menu">
-                            <i class="fas fa-plus nav-icon"></i>
-                            <p>Tạo mới</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                {{-- Salary --}}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-dollar-sign" aria-hidden="true"></i> 
-                        <p>
-                            Quản lý lương
-                            <i class="right fas fa-angle-left"></i> 
-                        </p>
-                    </a>
-
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/salary/fixed" class="nav-link mini-menu">
-                                <i class="fas fa-money-bill-wave-alt nav-icon"></i><i class="fas "></i>
-                                <p>Lương cố định</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/salary/monthly" class="nav-link mini-menu">
-                                <i class="fas fa-money-bill-wave nav-icon"></i>
-                                <p>Lương theo tháng</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/salary/list" class="nav-link mini-menu">
-                                <i class="fas fa-money-check-alt nav-icon"></i>
-                                <p>Bảng lương</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/salary/category" class="nav-link mini-menu">
-                                <i class="fas fa-receipt nav-icon"></i>
-                                <p>Danh mục lương</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/salary/formula" class="nav-link mini-menu">
-                                <i class="fas fa-calculator nav-icon"></i>
-                                <p>Công thức tính lương </p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                {{-- Salary advance --}}
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-wallet" aria-hidden="true"></i> 
-                        <p>
-                            Ứng lương
-                            <i class="right fas fa-angle-left"></i> 
-                        </p>
-                    </a>
-
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/advanceSalary/list" class="nav-link mini-menu">
-                                <i class="fas fa-list nav-icon"></i>
-                                <p>Danh sách</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/advanceSalary/add" class="nav-link mini-menu">
-                                <i class="fas fa-plus nav-icon"></i>
-                                <p>Tạo yêu cầu</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                {{-- Day off --}}
-                <li class="nav-item">
-                    <a href="/dayoff" class="nav-link">
-                        <i class="nav-icon fas fa-umbrella-beach" aria-hidden="true"></i> 
-                        <p>
-                            Quản lý ngày nghỉ   
-                        </p>
-                    </a>
                 </li>
 
                 {{-- Account --}}

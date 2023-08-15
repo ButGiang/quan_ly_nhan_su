@@ -48,9 +48,27 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <label>Địa chỉ</label>
-                <input type="text" name="address" class="form-control" placeholder="Enter address">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label>Địa chỉ</label>
+                    <input type="text" name="address" class="form-control" placeholder="Enter address">
+                </div>
+
+                <div class="form-group col-md-6">
+                    <label>Ngày tuyển dụng</label>
+                    <input type="date" name="recruit_day" class="form-control" value="{{ $today }}">
+                </div>
+            </div>
+
+            <div class="form-group col-md-12">
+                <label>Avatar</label>
+                <input type="file" class="form-control" id="upload" name='avatar'>
+                <div id="image_show">
+                    <a href="{{ $avatar }}">
+                        <img src="{{ $avatar }}" width="100px" height="120px" style="margin-top: 5px">
+                    </a>
+                </div>
+                <input type="hidden" name="avatar" id="file" value="{{ $avatar }}">
             </div>
 
             <div class="row">

@@ -9,6 +9,10 @@ use App\Models\phongban;
 use App\Models\chuyennganh;
 use App\Models\trinhdo;
 use App\Models\taikhoannganhang;
+use App\Models\baohiem;
+use App\Models\qtpt;
+use App\Models\thanhtuu;
+
 
 class NhanVienService {
     // gọi vào func staff trong Model Staff
@@ -43,6 +47,7 @@ class NhanVienService {
                 'CCCD' => (string) $request->input('CCCD'),
                 'diachi' => (string) $request->input('address'),
                 'sdt' => (string) $request->input('phone'),
+                'ngaytuyendung' => $request->input('recruit_day'),
                 'id_phongban' => $request->input('department'),
                 'id_chuyennganh' => (string) $request->input('major'),
                 'id_trinhdo' => (string) $request->input('level'),
@@ -54,20 +59,6 @@ class NhanVienService {
             $request->session()->flash('error', $e->getMessage());
             return false;
         }
-        return true;
-    }
-
-    public function edit_profile($request, $nhanvien) {
-        $nhanvien->ho = (string) $request->input('first_name');
-        $nhanvien->ten = (string) $request->input('last_name');
-        $nhanvien->ngaysinh = $request->input('birthday');
-        $nhanvien->email = (string) $request->input('email');
-        $nhanvien->CCCD = (string) $request->input('CCCD');
-        $nhanvien->diachi = (string) $request->input('address');
-        $nhanvien->sdt = (string) $request->input('phone');
-        $nhanvien->save();
-
-        $request->session()->flash('success', 'Cập nhật thành công');
         return true;
     }
 
@@ -99,6 +90,7 @@ class NhanVienService {
         return false;
     }
 
+
     public function bank_create($request) {
         try {
             taikhoannganhang::create([
@@ -128,6 +120,120 @@ class NhanVienService {
         $TKNH = taikhoannganhang::where('id_tknh', (int) $request->input('id'))->first();
         if($TKNH) {
             $TKNH->delete();
+            return true;
+        }
+        return false;
+    }
+
+
+    public function insurance_create($request) {
+        try {
+            baohiem::create([
+                'mabaohiem' => $request->input('insurance_number'),
+                'noidangki' => $request->input('place'),
+                'ngaydangki' => $request->input('day'),
+                'noikhambenh' => $request->input('hospital_place'),
+                'id' => (int) $request->input('staff'),
+            ]);
+            $request->session()->flash('success', 'Tạo mới thành công!');
+        }
+        catch(exception $e) {
+            $request->session()->flash('error', $e->getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    public function insurance_update($request, $id_baohiem): bool {
+        $id_baohiem->mabaohiem = (string) $request->input('insurance_number');
+        $id_baohiem->noidangki = $request->input('place');
+        $id_baohiem->ngaydangki = $request->input('day');
+        $id_baohiem->noikhambenh = $request->input('hospital_place');
+        $id_baohiem->save();
+
+        $request->session()->flash('success', 'Cập nhật thành công');
+        return true;
+    }
+
+    public function insurance_delete($request) {
+        $bh = baohiem::where('id_baohiem', (int) $request->input('id'))->first();
+        if($bh) {
+            $bh->delete();
+            return true;
+        }
+        return false;
+    }
+
+
+    public function grown_process_create($request) {
+        try {
+            qtpt::create([
+                'trinhdohocvan' => $request->input('tdhv'),
+                'kinhnghiemlamviec' => $request->input('exp'),
+                'id' => (int) $request->input('staff'),
+            ]);
+            $request->session()->flash('success', 'Khai báo thành công!');
+        }
+        catch(exception $e) {
+            $request->session()->flash('error', $e->getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    public function grown_process_update($request, $id): bool {
+        $id->trinhdohocvan = (int) $request->input('tdhv');
+        $id->kinhnghiemlamviec = (string) $request->input('exp');
+        $id->save();
+
+        $request->session()->flash('success', 'Cập nhật thành công');
+        return true;
+    }
+
+    public function grown_process_delete($request) {
+        $qtpt = qtpt::where('id_qtpt', (int) $request->input('id'))->first();
+        if($qtpt) {
+            $qtpt->delete();
+            return true;
+        }
+        return false;
+    }
+
+
+
+    public function achievement_create($request) {
+        try {
+            thanhtuu::create([
+                'loai' => (int) $request->input('ach_type'),
+                'ten' => $request->input('name'),
+                'ngaycap' => $request->input('degree_day'),
+                'mota' => $request->input('desc'),
+                'id' => (int) $request->input('staff'),
+            ]);
+            $request->session()->flash('success', 'Khai báo thành công!');
+        }
+        catch(exception $e) {
+            $request->session()->flash('error', $e->getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    public function achievement_update($request, $id): bool {
+        $id->loai = (int) $request->input('ach_type');
+        $id->ten = (string) $request->input('name');
+        $id->ngaycap = $request->input('degree_day');
+        $id->mota = $request->input('desc');
+        $id->save();
+
+        $request->session()->flash('success', 'Cập nhật thành công');
+        return true;
+    }
+
+    public function achievement_delete($request) {
+        $tt = thanhtuu::where('id_thanhtuu', (int) $request->input('id'))->first();
+        if($tt) {
+            $tt->delete();
             return true;
         }
         return false;

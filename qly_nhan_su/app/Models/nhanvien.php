@@ -20,6 +20,8 @@ class nhanvien extends Model
         'email',
         'diachi',
         'sdt',
+        'avatar',
+        'ngaytuyendung',
         'active',
         'id_phongban',
         'id_chuyennganh',

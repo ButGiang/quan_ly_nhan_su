@@ -19,6 +19,12 @@
     .mini-menu {
         margin-left: 15px;
     }
+    .card-title {
+        margin-top: 5px;
+    }
+    .add-btn {
+        margin-top: 23px;
+    }
 </style>
 
 @yield('header')

@@ -8,6 +8,11 @@
                 <label>Tên chuyên ngành</label>
                 <input type="text" name="name" class="form-control"  value="{{ $major->ten }}" placeholder="Enter name">
             </div>
+            
+            <div class="form-group">
+                <label>Mô tả</label>
+                <textarea name="describe" class="form-control" >{{ $major->mota }}</textarea>
+            </div>
         </div>
 
         <div class="card-footer">
